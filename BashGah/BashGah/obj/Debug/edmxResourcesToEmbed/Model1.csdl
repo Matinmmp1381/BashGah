@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DB_GymModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Tbl_Athletes">
+    <Key>
+      <PropertyRef Name="Athlete_ID" />
+    </Key>
+    <Property Name="Athlete_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Athlete_FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Athlete_BirthDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Athlete_JoinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Athlete_ValidityDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Athlete_WardropNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Athlete_Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Athlete_PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Tbl_Factor" Relationship="Self.FK_Tbl_Factor_Tbl_Factor" FromRole="Tbl_Athletes" ToRole="Tbl_Factor" />
+  </EntityType>
+  <EntityType Name="Tbl_Factor">
+    <Key>
+      <PropertyRef Name="Factor_ID" />
+    </Key>
+    <Property Name="Factor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Factor_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Facotr_Price" Type="Int32" Nullable="false" />
+    <Property Name="Factor_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Tbl_Athletes" Relationship="Self.FK_Tbl_Factor_Tbl_Factor" FromRole="Tbl_Factor" ToRole="Tbl_Athletes" />
+  </EntityType>
+  <EntityType Name="Tbl_Store">
+    <Key>
+      <PropertyRef Name="Store_FoodID" />
+    </Key>
+    <Property Name="Store_FoodID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Store_FoodName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Store_FoodPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Store_FoodInventory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tbl_Wardrops">
+    <Key>
+      <PropertyRef Name="Wardrop_ID" />
+    </Key>
+    <Property Name="Wardrop_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Wardrop_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Wardrop_State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Wardrop_AthleteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Tbl_Factor_Tbl_Factor">
+    <End Role="Tbl_Athletes" Type="Self.Tbl_Athletes" Multiplicity="1" />
+    <End Role="Tbl_Factor" Type="Self.Tbl_Factor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tbl_Athletes">
+        <PropertyRef Name="Athlete_ID" />
+      </Principal>
+      <Dependent Role="Tbl_Factor">
+        <PropertyRef Name="Athlete_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DB_GymEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Tbl_Athletes" EntityType="Self.Tbl_Athletes" />
+    <EntitySet Name="Tbl_Factor" EntityType="Self.Tbl_Factor" />
+    <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" />
+    <EntitySet Name="Tbl_Wardrops" EntityType="Self.Tbl_Wardrops" />
+    <AssociationSet Name="FK_Tbl_Factor_Tbl_Factor" Association="Self.FK_Tbl_Factor_Tbl_Factor">
+      <End Role="Tbl_Athletes" EntitySet="Tbl_Athletes" />
+      <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
