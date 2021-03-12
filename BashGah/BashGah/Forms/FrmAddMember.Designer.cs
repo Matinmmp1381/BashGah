@@ -94,7 +94,7 @@
             this.btnOpenPicture.IconColor = System.Drawing.Color.Cyan;
             this.btnOpenPicture.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnOpenPicture.IconSize = 25;
-            this.btnOpenPicture.Location = new System.Drawing.Point(52, 274);
+            this.btnOpenPicture.Location = new System.Drawing.Point(53, 275);
             this.btnOpenPicture.Name = "btnOpenPicture";
             this.btnOpenPicture.Size = new System.Drawing.Size(25, 25);
             this.btnOpenPicture.TabIndex = 4;
