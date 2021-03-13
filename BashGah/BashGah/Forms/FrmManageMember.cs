@@ -14,12 +14,14 @@ namespace BashGah.Forms
     public partial class FrmManageMember : Form
     {
         private IconButton iconBtn;
+        private int _width = 0;
         private string _imageName;
         private int? _num = 0;
-        private int _flag = 0;
+        private int _flag, _timerflag = 0;
         public FrmManageMember()
         {
             InitializeComponent();
+            pnlSubMenu.Size = new Size(0, 700);
             pnlSubMenu.Visible = false;
             dtGrid.AutoGenerateColumns = false;
             using (DB_GymEntities gymDb = new DB_GymEntities())
@@ -30,8 +32,12 @@ namespace BashGah.Forms
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            DisableSubMenuBtn();
-            pnlSubMenu.Visible = false;
+
+            if (_timerflag == 1)
+            {
+                DisableSubMenuBtn();
+                timer2.Enabled = true;
+            }
 
         }
 
@@ -47,15 +53,26 @@ namespace BashGah.Forms
             txtPhoneNumber.Enabled = txtAddress.Enabled = txtBirthDay.Enabled =
             txtJoinDay.Enabled = txtValidDay.Enabled = txtName.Enabled = btnOpenPicture.Enabled = false;
             btnEdit.Visible = false;
-            _num = int.Parse(dtGrid.CurrentRow.Cells[0].Value.ToString());
+
+            if (dtGrid.CurrentRow != null)
+                _num = int.Parse(dtGrid.CurrentRow.Cells[0].Value.ToString());           
+
             if (_num == null || _num == 0)
             {
                 MessageBox.Show("لطفا یک ردیف را انتخاب کنید");
                 return;
             }
-            pnlSubMenu.Visible = true;
-            ActiveSubMenuBtn(btnSubDetail);
             LoadInfo();
+            if (_timerflag == 0)
+            {
+                ActiveSubMenuBtn(btnSubDetail);
+
+
+                timer1.Enabled = true;
+                pnlSubMenu.Visible = true;
+
+            }
+
         }
 
         private void LoadInfo()
@@ -197,10 +214,52 @@ namespace BashGah.Forms
                 MessageBox.Show("لطفا یک ردیف را انتخاب کنید");
                 return;
             }
-            pnlSubMenu.Visible = true;
-            ActiveSubMenuBtn(btnSubDetail);
             LoadInfo();
+            if (_timerflag == 0)
+            {
+                ActiveSubMenuBtn(btnSubDetail);
+
+
+                timer1.Enabled = true;
+                pnlSubMenu.Visible = true;
+
+            }
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            _width += 10;
+            pnlSubMenu.Size = new Size(_width, 700);
+
+            if (_width >= 250)
+            {
+                timer1.Enabled = false;
+                _timerflag = 1;
+            }
+
+
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            _width -= 10;
+            pnlSubMenu.Size = new Size(_width, 700);
+
+            if (_width <= 0)
+            {
+                timer2.Enabled = false;
+                _timerflag = 0;
+
+            }
+        }
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            using (DB_GymEntities dbGym = new DB_GymEntities())
+            {
+                var list = dbGym.Tbl_Athlete.Where(c => c.Athlete_FullName.Contains(txtSearch.Text)).ToList();
+                dtGrid.DataSource = list;
+            }
+        }
+
     }
 }
 
