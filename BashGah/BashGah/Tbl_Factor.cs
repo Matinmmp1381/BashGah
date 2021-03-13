@@ -20,6 +20,6 @@ namespace BashGah
         public string Factor_Type { get; set; }
         public int Athlete_ID { get; set; }
     
-        public virtual Tbl_Athletes Tbl_Athletes { get; set; }
+        public virtual Tbl_Athlete Tbl_Athlete { get; set; }
     }
 }

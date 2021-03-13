@@ -25,9 +25,9 @@ namespace BashGah
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Tbl_Athletes> Tbl_Athletes { get; set; }
-        public virtual DbSet<Tbl_Factor> Tbl_Factor { get; set; }
         public virtual DbSet<Tbl_Store> Tbl_Store { get; set; }
         public virtual DbSet<Tbl_Wardrops> Tbl_Wardrops { get; set; }
+        public virtual DbSet<Tbl_Athlete> Tbl_Athlete { get; set; }
+        public virtual DbSet<Tbl_Factor> Tbl_Factor { get; set; }
     }
 }

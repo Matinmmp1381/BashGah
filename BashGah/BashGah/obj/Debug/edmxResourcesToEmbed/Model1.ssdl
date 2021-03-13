@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_GymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Tbl_Athletes">
+  <EntityType Name="Tbl_Athlete">
     <Key>
       <PropertyRef Name="Athlete_ID" />
     </Key>
     <Property Name="Athlete_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Athlete_FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Athlete_FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Athlete_BirthDay" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Athlete_JoinDate" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Athlete_ValidityDate" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Athlete_WardropNum" Type="nvarchar" MaxLength="50" />
-    <Property Name="Athlete_Address" Type="nvarchar" MaxLength="300" />
+    <Property Name="Athlete_Address" Type="nvarchar" MaxLength="250" />
     <Property Name="Athlete_PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Athlete_Image" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Tbl_Factor">
     <Key>
@@ -41,11 +42,11 @@
     <Property Name="Wardrop_State" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Wardrop_AthleteName" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <Association Name="FK_Tbl_Factor_Tbl_Factor">
-    <End Role="Tbl_Athletes" Type="Self.Tbl_Athletes" Multiplicity="1" />
+  <Association Name="FK_Tbl_Factor_Tbl_Athlete">
+    <End Role="Tbl_Athlete" Type="Self.Tbl_Athlete" Multiplicity="1" />
     <End Role="Tbl_Factor" Type="Self.Tbl_Factor" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Tbl_Athletes">
+      <Principal Role="Tbl_Athlete">
         <PropertyRef Name="Athlete_ID" />
       </Principal>
       <Dependent Role="Tbl_Factor">
@@ -54,12 +55,12 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DB_GymModelStoreContainer">
-    <EntitySet Name="Tbl_Athletes" EntityType="Self.Tbl_Athletes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tbl_Athlete" EntityType="Self.Tbl_Athlete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Factor" EntityType="Self.Tbl_Factor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Wardrops" EntityType="Self.Tbl_Wardrops" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Tbl_Factor_Tbl_Factor" Association="Self.FK_Tbl_Factor_Tbl_Factor">
-      <End Role="Tbl_Athletes" EntitySet="Tbl_Athletes" />
+    <AssociationSet Name="FK_Tbl_Factor_Tbl_Athlete" Association="Self.FK_Tbl_Factor_Tbl_Athlete">
+      <End Role="Tbl_Athlete" EntitySet="Tbl_Athlete" />
       <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
     </AssociationSet>
   </EntityContainer>

@@ -20,7 +20,7 @@ namespace BashGah.Forms
             dtGrid.AutoGenerateColumns = false;
             using (DB_GymEntities gymDb = new DB_GymEntities())
             {
-                dtGrid.DataSource = gymDb.Tbl_Athletes.ToList();
+                dtGrid.DataSource = gymDb.Tbl_Athlete.ToList();
             }
         }
 

@@ -12,10 +12,10 @@ namespace BashGah
     using System;
     using System.Collections.Generic;
     
-    public partial class Tbl_Athletes
+    public partial class Tbl_Athlete
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Tbl_Athletes()
+        public Tbl_Athlete()
         {
             this.Tbl_Factor = new HashSet<Tbl_Factor>();
         }
@@ -28,6 +28,7 @@ namespace BashGah
         public string Athlete_WardropNum { get; set; }
         public string Athlete_Address { get; set; }
         public string Athlete_PhoneNumber { get; set; }
+        public string Athlete_Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Factor> Tbl_Factor { get; set; }

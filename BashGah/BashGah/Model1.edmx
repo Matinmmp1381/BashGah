@@ -4,19 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_GymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Tbl_Athletes">
+    <Schema Namespace="DB_GymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_Athlete">
           <Key>
             <PropertyRef Name="Athlete_ID" />
           </Key>
           <Property Name="Athlete_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Athlete_FullName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Athlete_FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Athlete_BirthDay" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Athlete_JoinDate" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Athlete_ValidityDate" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Athlete_WardropNum" Type="nvarchar" MaxLength="50" />
-          <Property Name="Athlete_Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="Athlete_Address" Type="nvarchar" MaxLength="250" />
           <Property Name="Athlete_PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Athlete_Image" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_Factor">
           <Key>
@@ -46,11 +47,11 @@
           <Property Name="Wardrop_State" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Wardrop_AthleteName" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_Tbl_Factor_Tbl_Factor">
-          <End Role="Tbl_Athletes" Type="Self.Tbl_Athletes" Multiplicity="1" />
+        <Association Name="FK_Tbl_Factor_Tbl_Athlete">
+          <End Role="Tbl_Athlete" Type="Self.Tbl_Athlete" Multiplicity="1" />
           <End Role="Tbl_Factor" Type="Self.Tbl_Factor" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tbl_Athletes">
+            <Principal Role="Tbl_Athlete">
               <PropertyRef Name="Athlete_ID" />
             </Principal>
             <Dependent Role="Tbl_Factor">
@@ -59,45 +60,19 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DB_GymModelStoreContainer">
-          <EntitySet Name="Tbl_Athletes" EntityType="Self.Tbl_Athletes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tbl_Athlete" EntityType="Self.Tbl_Athlete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Factor" EntityType="Self.Tbl_Factor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Wardrops" EntityType="Self.Tbl_Wardrops" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Tbl_Factor_Tbl_Factor" Association="Self.FK_Tbl_Factor_Tbl_Factor">
-            <End Role="Tbl_Athletes" EntitySet="Tbl_Athletes" />
+          <AssociationSet Name="FK_Tbl_Factor_Tbl_Athlete" Association="Self.FK_Tbl_Factor_Tbl_Athlete">
+            <End Role="Tbl_Athlete" EntitySet="Tbl_Athlete" />
             <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DB_GymModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Tbl_Athletes">
-          <Key>
-            <PropertyRef Name="Athlete_ID" />
-          </Key>
-          <Property Name="Athlete_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Athlete_FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Athlete_BirthDay" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Athlete_JoinDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Athlete_ValidityDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Athlete_WardropNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Athlete_Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Athlete_PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Tbl_Factor" Relationship="Self.FK_Tbl_Factor_Tbl_Factor" FromRole="Tbl_Athletes" ToRole="Tbl_Factor" />
-        </EntityType>
-        <EntityType Name="Tbl_Factor">
-          <Key>
-            <PropertyRef Name="Factor_ID" />
-          </Key>
-          <Property Name="Factor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Factor_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Facotr_Price" Type="Int32" Nullable="false" />
-          <Property Name="Factor_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Tbl_Athletes" Relationship="Self.FK_Tbl_Factor_Tbl_Factor" FromRole="Tbl_Factor" ToRole="Tbl_Athletes" />
-        </EntityType>
         <EntityType Name="Tbl_Store">
           <Key>
             <PropertyRef Name="Store_FoodID" />
@@ -116,11 +91,47 @@
           <Property Name="Wardrop_State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Wardrop_AthleteName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_Tbl_Factor_Tbl_Factor">
-          <End Role="Tbl_Athletes" Type="Self.Tbl_Athletes" Multiplicity="1" />
-          <End Role="Tbl_Factor" Type="Self.Tbl_Factor" Multiplicity="*" />
+        <EntityContainer Name="DB_GymEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" />
+          <EntitySet Name="Tbl_Wardrops" EntityType="Self.Tbl_Wardrops" />
+          <EntitySet Name="Tbl_Athlete" EntityType="DB_GymModel.Tbl_Athlete" />
+          <EntitySet Name="Tbl_Factor" EntityType="DB_GymModel.Tbl_Factor" />
+          <AssociationSet Name="FK_Tbl_Factor_Tbl_Athlete" Association="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete">
+            <End Role="Tbl_Athlete" EntitySet="Tbl_Athlete" />
+            <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tbl_Athlete">
+          <Key>
+            <PropertyRef Name="Athlete_ID" />
+          </Key>
+          <Property Name="Athlete_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Athlete_FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_BirthDay" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_JoinDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_ValidityDate" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_WardropNum" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_Image" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Factor" Relationship="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" FromRole="Tbl_Athlete" ToRole="Tbl_Factor" />
+        </EntityType>
+        <EntityType Name="Tbl_Factor">
+          <Key>
+            <PropertyRef Name="Factor_ID" />
+          </Key>
+          <Property Name="Factor_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Factor_Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Facotr_Price" Type="Int32" Nullable="false" />
+          <Property Name="Factor_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Athlete" Relationship="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" FromRole="Tbl_Factor" ToRole="Tbl_Athlete" />
+        </EntityType>
+        <Association Name="FK_Tbl_Factor_Tbl_Athlete">
+          <End Type="DB_GymModel.Tbl_Athlete" Role="Tbl_Athlete" Multiplicity="1" />
+          <End Type="DB_GymModel.Tbl_Factor" Role="Tbl_Factor" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Tbl_Athletes">
+            <Principal Role="Tbl_Athlete">
               <PropertyRef Name="Athlete_ID" />
             </Principal>
             <Dependent Role="Tbl_Factor">
@@ -128,47 +139,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DB_GymEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Tbl_Athletes" EntityType="Self.Tbl_Athletes" />
-          <EntitySet Name="Tbl_Factor" EntityType="Self.Tbl_Factor" />
-          <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" />
-          <EntitySet Name="Tbl_Wardrops" EntityType="Self.Tbl_Wardrops" />
-          <AssociationSet Name="FK_Tbl_Factor_Tbl_Factor" Association="Self.FK_Tbl_Factor_Tbl_Factor">
-            <End Role="Tbl_Athletes" EntitySet="Tbl_Athletes" />
-            <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DB_GymModelStoreContainer" CdmEntityContainer="DB_GymEntities">
-          <EntitySetMapping Name="Tbl_Athletes">
-            <EntityTypeMapping TypeName="DB_GymModel.Tbl_Athletes">
-              <MappingFragment StoreEntitySet="Tbl_Athletes">
-                <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
-                <ScalarProperty Name="Athlete_FullName" ColumnName="Athlete_FullName" />
-                <ScalarProperty Name="Athlete_BirthDay" ColumnName="Athlete_BirthDay" />
-                <ScalarProperty Name="Athlete_JoinDate" ColumnName="Athlete_JoinDate" />
-                <ScalarProperty Name="Athlete_ValidityDate" ColumnName="Athlete_ValidityDate" />
-                <ScalarProperty Name="Athlete_WardropNum" ColumnName="Athlete_WardropNum" />
-                <ScalarProperty Name="Athlete_Address" ColumnName="Athlete_Address" />
-                <ScalarProperty Name="Athlete_PhoneNumber" ColumnName="Athlete_PhoneNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Tbl_Factor">
-            <EntityTypeMapping TypeName="DB_GymModel.Tbl_Factor">
-              <MappingFragment StoreEntitySet="Tbl_Factor">
-                <ScalarProperty Name="Factor_ID" ColumnName="Factor_ID" />
-                <ScalarProperty Name="Factor_Date" ColumnName="Factor_Date" />
-                <ScalarProperty Name="Facotr_Price" ColumnName="Facotr_Price" />
-                <ScalarProperty Name="Factor_Type" ColumnName="Factor_Type" />
-                <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tbl_Store">
             <EntityTypeMapping TypeName="DB_GymModel.Tbl_Store">
               <MappingFragment StoreEntitySet="Tbl_Store">
@@ -186,6 +162,32 @@
                 <ScalarProperty Name="Wardrop_Number" ColumnName="Wardrop_Number" />
                 <ScalarProperty Name="Wardrop_State" ColumnName="Wardrop_State" />
                 <ScalarProperty Name="Wardrop_AthleteName" ColumnName="Wardrop_AthleteName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Athlete">
+            <EntityTypeMapping TypeName="DB_GymModel.Tbl_Athlete">
+              <MappingFragment StoreEntitySet="Tbl_Athlete">
+                <ScalarProperty Name="Athlete_Image" ColumnName="Athlete_Image" />
+                <ScalarProperty Name="Athlete_PhoneNumber" ColumnName="Athlete_PhoneNumber" />
+                <ScalarProperty Name="Athlete_Address" ColumnName="Athlete_Address" />
+                <ScalarProperty Name="Athlete_WardropNum" ColumnName="Athlete_WardropNum" />
+                <ScalarProperty Name="Athlete_ValidityDate" ColumnName="Athlete_ValidityDate" />
+                <ScalarProperty Name="Athlete_JoinDate" ColumnName="Athlete_JoinDate" />
+                <ScalarProperty Name="Athlete_BirthDay" ColumnName="Athlete_BirthDay" />
+                <ScalarProperty Name="Athlete_FullName" ColumnName="Athlete_FullName" />
+                <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Factor">
+            <EntityTypeMapping TypeName="DB_GymModel.Tbl_Factor">
+              <MappingFragment StoreEntitySet="Tbl_Factor">
+                <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+                <ScalarProperty Name="Factor_Type" ColumnName="Factor_Type" />
+                <ScalarProperty Name="Facotr_Price" ColumnName="Facotr_Price" />
+                <ScalarProperty Name="Factor_Date" ColumnName="Factor_Date" />
+                <ScalarProperty Name="Factor_ID" ColumnName="Factor_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

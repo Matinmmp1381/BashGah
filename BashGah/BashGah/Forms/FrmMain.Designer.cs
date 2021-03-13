@@ -681,6 +681,7 @@
             this.MaximumSize = new System.Drawing.Size(1400, 1000);
             this.MinimumSize = new System.Drawing.Size(1100, 900);
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
             this.pnlTop.ResumeLayout(false);
             this.panel4.ResumeLayout(false);

@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="adb3267e3a6248ff84bd95fa6b0c28d9" Name="Diagram1">
-        <EntityTypeShape EntityType="DB_GymModel.Tbl_Athletes" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DB_GymModel.Tbl_Factor" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+      <Diagram DiagramId="3ac64419fee84f88b13461f9f5b716aa" Name="Diagram1">
         <EntityTypeShape EntityType="DB_GymModel.Tbl_Store" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_GymModel.Tbl_Wardrops" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="DB_GymModel.FK_Tbl_Factor_Tbl_Factor" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DB_GymModel.Tbl_Athlete" Width="1.5" PointX="2.25" PointY="1.5" />
+        <EntityTypeShape EntityType="DB_GymModel.Tbl_Factor" Width="1.5" PointX="4.5" PointY="1.875" />
+        <AssociationConnector Association="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
