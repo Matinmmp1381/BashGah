@@ -52,6 +52,7 @@
     <Property Name="Facotr_Price" Type="Int32" Nullable="false" />
     <Property Name="Factor_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+    <Property Name="Factor_Typ" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Tbl_Athlete" Relationship="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" FromRole="Tbl_Factor" ToRole="Tbl_Athlete" />
   </EntityType>
   <Association Name="FK_Tbl_Factor_Tbl_Athlete">

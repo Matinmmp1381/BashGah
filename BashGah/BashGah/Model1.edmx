@@ -28,6 +28,7 @@
           <Property Name="Facotr_Price" Type="int" Nullable="false" />
           <Property Name="Factor_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Athlete_ID" Type="int" Nullable="false" />
+          <Property Name="Factor_Typ" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Tbl_Store">
           <Key>
@@ -125,6 +126,7 @@
           <Property Name="Facotr_Price" Type="Int32" Nullable="false" />
           <Property Name="Factor_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+          <Property Name="Factor_Typ" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tbl_Athlete" Relationship="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" FromRole="Tbl_Factor" ToRole="Tbl_Athlete" />
         </EntityType>
         <Association Name="FK_Tbl_Factor_Tbl_Athlete">
@@ -183,6 +185,7 @@
           <EntitySetMapping Name="Tbl_Factor">
             <EntityTypeMapping TypeName="DB_GymModel.Tbl_Factor">
               <MappingFragment StoreEntitySet="Tbl_Factor">
+                <ScalarProperty Name="Factor_Typ" ColumnName="Factor_Typ" />
                 <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
                 <ScalarProperty Name="Factor_Type" ColumnName="Factor_Type" />
                 <ScalarProperty Name="Facotr_Price" ColumnName="Facotr_Price" />

@@ -23,6 +23,7 @@
     <Property Name="Facotr_Price" Type="int" Nullable="false" />
     <Property Name="Factor_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Athlete_ID" Type="int" Nullable="false" />
+    <Property Name="Factor_Typ" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Tbl_Store">
     <Key>

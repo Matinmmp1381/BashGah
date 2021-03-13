@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="DB_GymModel.Tbl_Store" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_GymModel.Tbl_Wardrops" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DB_GymModel.Tbl_Athlete" Width="1.5" PointX="2.25" PointY="1.5" />
-        <EntityTypeShape EntityType="DB_GymModel.Tbl_Factor" Width="1.5" PointX="4.5" PointY="1.875" />
+        <EntityTypeShape EntityType="DB_GymModel.Tbl_Factor" Width="1.5" PointX="4.5" PointY="0.75" />
         <AssociationConnector Association="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" />
       </Diagram>
     </edmx:Diagrams>

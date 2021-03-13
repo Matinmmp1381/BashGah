@@ -14,6 +14,8 @@ namespace BashGah.Forms
     public partial class FrmManageMember : Form
     {
         private IconButton iconBtn;
+        private string _fullname;
+        private string _validay;
         private int _width = 0;
         private string _imageName;
         private int? _num = 0;
@@ -21,9 +23,10 @@ namespace BashGah.Forms
         public FrmManageMember()
         {
             InitializeComponent();
-            pnlSubMenu.Size = new Size(0, 700);
+            pnlSubMenu.Size = new Size(0, pnlSubMenu.Height);
             pnlSubMenu.Visible = false;
             dtGrid.AutoGenerateColumns = false;
+            pnlPayMent.Visible = false;
             using (DB_GymEntities gymDb = new DB_GymEntities())
             {
                 dtGrid.DataSource = gymDb.Tbl_Athlete.ToList();
@@ -53,7 +56,8 @@ namespace BashGah.Forms
             txtPhoneNumber.Enabled = txtAddress.Enabled = txtBirthDay.Enabled =
             txtJoinDay.Enabled = txtValidDay.Enabled = txtName.Enabled = btnOpenPicture.Enabled = false;
             btnEdit.Visible = false;
-
+            pnlSub.Size = new Size(pnlSubMenu.Width, pnlSubMenu.Height);
+            ActiveSubMenuBtn(btnSubDetail);
             if (dtGrid.CurrentRow != null)
                 _num = int.Parse(dtGrid.CurrentRow.Cells[0].Value.ToString());           
 
@@ -64,10 +68,7 @@ namespace BashGah.Forms
             }
             LoadInfo();
             if (_timerflag == 0)
-            {
-                ActiveSubMenuBtn(btnSubDetail);
-
-
+            {             
                 timer1.Enabled = true;
                 pnlSubMenu.Visible = true;
 
@@ -87,6 +88,8 @@ namespace BashGah.Forms
                 txtValidDay.Text = tbl[0].Athlete_ValidityDate;
                 txtPhoneNumber.Text = tbl[0].Athlete_PhoneNumber;
                 pctImage.ImageLocation = Application.StartupPath + "/Images/" + tbl[0].Athlete_Image;
+                _fullname = tbl[0].Athlete_FullName;
+                _validay = tbl[0].Athlete_ValidityDate;
             }
         }
 
@@ -96,6 +99,8 @@ namespace BashGah.Forms
             txtPhoneNumber.Enabled = txtAddress.Enabled = txtBirthDay.Enabled =
             txtJoinDay.Enabled = txtValidDay.Enabled = txtName.Enabled = btnOpenPicture.Enabled = false;
             btnEdit.Visible = false;
+            pnlSub.Visible = true;
+            pnlPayMent.Visible = false;
         }
 
 
@@ -105,16 +110,39 @@ namespace BashGah.Forms
             txtPhoneNumber.Enabled = txtAddress.Enabled = txtBirthDay.Enabled =
              txtJoinDay.Enabled = txtValidDay.Enabled = txtName.Enabled = btnOpenPicture.Enabled = true;
             btnEdit.Visible = true;
+            pnlSub.Visible = true;
+            pnlPayMent.Visible = false;
         }
 
         private void btnSubPayFee_Click(object sender, EventArgs e)
         {
             ActiveSubMenuBtn(sender);
+            pnlSub.Visible = false;
+            pnlPayMent.Visible = true;
+            txtFeeName.Text = _fullname;
+            txtValidDayFee.Text = _validay;
+            txtFee.Value = int.Parse(Properties.Settings.Default.Fee);
         }
 
         private void btnSubDelete_Click(object sender, EventArgs e)
         {
             ActiveSubMenuBtn(sender);
+            if (MessageBox.Show("آیا از حذف این کاربر مطمن هستید؟") == DialogResult.OK)
+            {
+                using (DB_GymEntities dbGym = new DB_GymEntities())
+                {
+                    var tbl = dbGym.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
+                    File.Delete(Application.StartupPath + "/Images/" + tbl[0].Athlete_Image);
+                    dbGym.Tbl_Athlete.Remove(dbGym.Tbl_Athlete.Find(_num));
+                    dbGym.SaveChanges();
+                    dtGrid.DataSource = dbGym.Tbl_Athlete.ToList();
+                }
+                _timerflag = 0;
+                _width = 0;
+                pnlSubMenu.Size = new Size(_width, pnlSubMenu.Height);
+                pnlSubMenu.Visible = false;
+            }
+           
         }
 
         private void ActiveSubMenuBtn(object sender)
@@ -164,24 +192,30 @@ namespace BashGah.Forms
                         Directory.CreateDirectory(path);
                     }
                     pctImage.Image.Save(path + _imageName);
-                    Tbl_Athlete tbl = new Tbl_Athlete()
-                    {
-                        Athlete_ID = _num.Value,
-                        Athlete_Address = txtAddress.Text,
-                        Athlete_FullName = txtName.Text,
-                        Athlete_PhoneNumber = txtPhoneNumber.Text.ToString(),
-                        Athlete_WardropNum = null,
-                        Athlete_Image = _imageName,
-                        Athlete_BirthDay = txtBirthDay.Text.ToString(),
-                        Athlete_JoinDate = txtJoinDay.Text.ToString(),
-                        Athlete_ValidityDate = txtValidDay.Text.ToString(),
-                    };
-                    gymDB.Entry(tbl).State = System.Data.Entity.EntityState.Modified;
+                     var tblr = gymDB.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
+                    File.Delete(Application.StartupPath + "/Images/" + tblr[0].Athlete_Image);
+                    var tbl = gymDB.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
+
+                    tbl[0].Athlete_ID = _num.Value;
+                    tbl[0].Athlete_Address = txtAddress.Text;
+                    tbl[0].Athlete_FullName = txtName.Text;
+                    tbl[0].Athlete_PhoneNumber = txtPhoneNumber.Text.ToString();
+                    tbl[0].Athlete_WardropNum = null;
+                    tbl[0].Athlete_Image = _imageName;
+                    tbl[0].Athlete_BirthDay = txtBirthDay.Text.ToString();
+                    tbl[0].Athlete_JoinDate = txtJoinDay.Text.ToString();
+                    tbl[0].Athlete_ValidityDate = txtValidDay.Text.ToString();
+                    
                     gymDB.SaveChanges();
+                    
                     pctImage.Image.Save(path + _imageName);
                     MessageBox.Show("عملیات موفقیت آمیز بود");
                     dtGrid.DataSource = gymDB.Tbl_Athlete.ToList();
                     pnlSubMenu.Visible = false;
+                    _width = 0;
+                    _timerflag = 0;
+                    pnlSubMenu.Size = new Size(_width,pnlSubMenu.Height);
+                    
                 };
             }
             catch (Exception es)
@@ -208,6 +242,9 @@ namespace BashGah.Forms
             txtPhoneNumber.Enabled = txtAddress.Enabled = txtBirthDay.Enabled =
             txtJoinDay.Enabled = txtValidDay.Enabled = txtName.Enabled = btnOpenPicture.Enabled = false;
             btnEdit.Visible = false;
+            ActiveSubMenuBtn(btnSubDetail);
+            pnlSub.Size = new Size(pnlSubMenu.Width, pnlSubMenu.Height);
+
             _num = int.Parse(dtGrid.CurrentRow.Cells[0].Value.ToString());
             if (_num == null || _num == 0)
             {
@@ -216,10 +253,7 @@ namespace BashGah.Forms
             }
             LoadInfo();
             if (_timerflag == 0)
-            {
-                ActiveSubMenuBtn(btnSubDetail);
-
-
+            {               
                 timer1.Enabled = true;
                 pnlSubMenu.Visible = true;
 
@@ -229,7 +263,7 @@ namespace BashGah.Forms
         private void timer1_Tick(object sender, EventArgs e)
         {
             _width += 10;
-            pnlSubMenu.Size = new Size(_width, 700);
+            pnlSubMenu.Size = new Size(_width, pnlSubMenu.Height);
 
             if (_width >= 250)
             {
@@ -242,7 +276,7 @@ namespace BashGah.Forms
         private void timer2_Tick(object sender, EventArgs e)
         {
             _width -= 10;
-            pnlSubMenu.Size = new Size(_width, 700);
+            pnlSubMenu.Size = new Size(_width, pnlSubMenu.Height);
 
             if (_width <= 0)
             {
@@ -251,6 +285,9 @@ namespace BashGah.Forms
 
             }
         }
+
+       
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             using (DB_GymEntities dbGym = new DB_GymEntities())

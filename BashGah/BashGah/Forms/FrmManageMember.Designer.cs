@@ -39,6 +39,14 @@
             this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JoinDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlSubMenu = new System.Windows.Forms.Panel();
+            this.pnlPayMent = new System.Windows.Forms.Panel();
+            this.btnPay = new FontAwesome.Sharp.IconButton();
+            this.txtValidDayFee = new System.Windows.Forms.MaskedTextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtFee = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtFeeName = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.pnlSub = new System.Windows.Forms.Panel();
             this.btnEdit = new FontAwesome.Sharp.IconButton();
             this.txtValidDay = new System.Windows.Forms.MaskedTextBox();
@@ -73,6 +81,8 @@
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrid)).BeginInit();
             this.pnlSubMenu.SuspendLayout();
+            this.pnlPayMent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFee)).BeginInit();
             this.pnlSub.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctImage)).BeginInit();
             this.panel8.SuspendLayout();
@@ -91,7 +101,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(922, 776);
+            this.panel1.Size = new System.Drawing.Size(922, 996);
             this.panel1.TabIndex = 2;
             // 
             // panel7
@@ -102,7 +112,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(260, 60);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(652, 706);
+            this.panel7.Size = new System.Drawing.Size(652, 926);
             this.panel7.TabIndex = 9;
             // 
             // btnDetails
@@ -118,7 +128,7 @@
             this.btnDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDetails.IconSize = 30;
             this.btnDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDetails.Location = new System.Drawing.Point(441, 615);
+            this.btnDetails.Location = new System.Drawing.Point(441, 835);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(160, 46);
             this.btnDetails.TabIndex = 22;
@@ -160,7 +170,7 @@
             this.dtGrid.RowHeadersWidth = 51;
             this.dtGrid.RowTemplate.Height = 24;
             this.dtGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtGrid.Size = new System.Drawing.Size(540, 527);
+            this.dtGrid.Size = new System.Drawing.Size(540, 747);
             this.dtGrid.TabIndex = 5;
             this.dtGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrid_CellDoubleClick);
             // 
@@ -203,6 +213,7 @@
             // pnlSubMenu
             // 
             this.pnlSubMenu.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.pnlSubMenu.Controls.Add(this.pnlPayMent);
             this.pnlSubMenu.Controls.Add(this.pnlSub);
             this.pnlSubMenu.Controls.Add(this.btnSubDelete);
             this.pnlSubMenu.Controls.Add(this.btnSubPayFee);
@@ -212,8 +223,116 @@
             this.pnlSubMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSubMenu.Location = new System.Drawing.Point(10, 60);
             this.pnlSubMenu.Name = "pnlSubMenu";
-            this.pnlSubMenu.Size = new System.Drawing.Size(250, 706);
+            this.pnlSubMenu.Size = new System.Drawing.Size(250, 926);
             this.pnlSubMenu.TabIndex = 8;
+            // 
+            // pnlPayMent
+            // 
+            this.pnlPayMent.BackColor = System.Drawing.Color.DarkCyan;
+            this.pnlPayMent.Controls.Add(this.btnPay);
+            this.pnlPayMent.Controls.Add(this.txtValidDayFee);
+            this.pnlPayMent.Controls.Add(this.label10);
+            this.pnlPayMent.Controls.Add(this.txtFee);
+            this.pnlPayMent.Controls.Add(this.label9);
+            this.pnlPayMent.Controls.Add(this.txtFeeName);
+            this.pnlPayMent.Controls.Add(this.label8);
+            this.pnlPayMent.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPayMent.Location = new System.Drawing.Point(0, 675);
+            this.pnlPayMent.Name = "pnlPayMent";
+            this.pnlPayMent.Size = new System.Drawing.Size(250, 249);
+            this.pnlPayMent.TabIndex = 6;
+            // 
+            // btnPay
+            // 
+            this.btnPay.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnPay.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnPay.FlatAppearance.BorderColor = System.Drawing.Color.Navy;
+            this.btnPay.FlatAppearance.BorderSize = 2;
+            this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPay.ForeColor = System.Drawing.Color.White;
+            this.btnPay.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnPay.IconColor = System.Drawing.Color.White;
+            this.btnPay.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPay.IconSize = 35;
+            this.btnPay.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPay.Location = new System.Drawing.Point(55, 160);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(129, 49);
+            this.btnPay.TabIndex = 72;
+            this.btnPay.Text = "پرداخت";
+            this.btnPay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPay.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnPay.UseVisualStyleBackColor = false;
+            // 
+            // txtValidDayFee
+            // 
+            this.txtValidDayFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValidDayFee.Location = new System.Drawing.Point(11, 106);
+            this.txtValidDayFee.Mask = "0000/00/00";
+            this.txtValidDayFee.Name = "txtValidDayFee";
+            this.txtValidDayFee.Size = new System.Drawing.Size(120, 27);
+            this.txtValidDayFee.TabIndex = 71;
+            this.txtValidDayFee.ValidatingType = typeof(System.DateTime);
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(170, 106);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label10.Size = new System.Drawing.Size(74, 20);
+            this.label10.TabIndex = 70;
+            this.label10.Text = "ت اعتبار : ";
+            // 
+            // txtFee
+            // 
+            this.txtFee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFee.Location = new System.Drawing.Point(11, 60);
+            this.txtFee.Maximum = new decimal(new int[] {
+            1410065407,
+            2,
+            0,
+            0});
+            this.txtFee.Name = "txtFee";
+            this.txtFee.Size = new System.Drawing.Size(172, 27);
+            this.txtFee.TabIndex = 34;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(186, 59);
+            this.label9.Name = "label9";
+            this.label9.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label9.Size = new System.Drawing.Size(58, 20);
+            this.label9.TabIndex = 33;
+            this.label9.Text = "شهریه : ";
+            // 
+            // txtFeeName
+            // 
+            this.txtFeeName.Enabled = false;
+            this.txtFeeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFeeName.Location = new System.Drawing.Point(11, 16);
+            this.txtFeeName.Name = "txtFeeName";
+            this.txtFeeName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtFeeName.Size = new System.Drawing.Size(172, 27);
+            this.txtFeeName.TabIndex = 32;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(206, 18);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(38, 20);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "نام : ";
             // 
             // pnlSub
             // 
@@ -234,15 +353,15 @@
             this.pnlSub.Controls.Add(this.label3);
             this.pnlSub.Controls.Add(this.label2);
             this.pnlSub.Controls.Add(this.label1);
-            this.pnlSub.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlSub.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSub.Location = new System.Drawing.Point(0, 187);
             this.pnlSub.Name = "pnlSub";
-            this.pnlSub.Size = new System.Drawing.Size(250, 519);
+            this.pnlSub.Size = new System.Drawing.Size(250, 488);
             this.pnlSub.TabIndex = 5;
             // 
             // btnEdit
             // 
-            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnEdit.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.Navy;
             this.btnEdit.FlatAppearance.BorderSize = 2;
@@ -254,7 +373,7 @@
             this.btnEdit.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEdit.IconSize = 35;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(54, 425);
+            this.btnEdit.Location = new System.Drawing.Point(55, 417);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(129, 49);
             this.btnEdit.TabIndex = 8;
@@ -555,7 +674,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.Aqua;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(10, 766);
+            this.panel5.Location = new System.Drawing.Point(10, 986);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(902, 10);
             this.panel5.TabIndex = 4;
@@ -566,7 +685,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(912, 60);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(10, 716);
+            this.panel2.Size = new System.Drawing.Size(10, 936);
             this.panel2.TabIndex = 1;
             // 
             // panel4
@@ -575,7 +694,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 60);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(10, 716);
+            this.panel4.Size = new System.Drawing.Size(10, 936);
             this.panel4.TabIndex = 3;
             // 
             // panel3
@@ -626,7 +745,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 776);
+            this.ClientSize = new System.Drawing.Size(922, 996);
             this.Controls.Add(this.panel1);
             this.Name = "FrmManageMember";
             this.Text = "FrmManageMember";
@@ -635,6 +754,9 @@
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrid)).EndInit();
             this.pnlSubMenu.ResumeLayout(false);
+            this.pnlPayMent.ResumeLayout(false);
+            this.pnlPayMent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtFee)).EndInit();
             this.pnlSub.ResumeLayout(false);
             this.pnlSub.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctImage)).EndInit();
@@ -686,5 +808,13 @@
         private FontAwesome.Sharp.IconButton btnEdit;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Panel pnlPayMent;
+        private FontAwesome.Sharp.IconButton btnPay;
+        private System.Windows.Forms.MaskedTextBox txtValidDayFee;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown txtFee;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtFeeName;
+        private System.Windows.Forms.Label label8;
     }
 }

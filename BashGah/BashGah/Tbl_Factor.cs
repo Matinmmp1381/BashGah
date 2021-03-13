@@ -19,6 +19,7 @@ namespace BashGah
         public int Facotr_Price { get; set; }
         public string Factor_Type { get; set; }
         public int Athlete_ID { get; set; }
+        public string Factor_Typ { get; set; }
     
         public virtual Tbl_Athlete Tbl_Athlete { get; set; }
     }
