@@ -30,8 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.btnOpenSubMenu = new FontAwesome.Sharp.IconButton();
             this.btnDetails = new FontAwesome.Sharp.IconButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dtGrid = new System.Windows.Forms.DataGridView();
@@ -41,8 +39,12 @@
             this.JoinDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlSubMenu = new System.Windows.Forms.Panel();
             this.pnlSub = new System.Windows.Forms.Panel();
+            this.btnEdit = new FontAwesome.Sharp.IconButton();
+            this.txtValidDay = new System.Windows.Forms.MaskedTextBox();
+            this.txtJoinDay = new System.Windows.Forms.MaskedTextBox();
+            this.txtBirthDay = new System.Windows.Forms.MaskedTextBox();
             this.btnOpenPicture = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pctImage = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
@@ -69,7 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGrid)).BeginInit();
             this.pnlSubMenu.SuspendLayout();
             this.pnlSub.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctImage)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -91,8 +93,6 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.maskedTextBox1);
-            this.panel7.Controls.Add(this.btnOpenSubMenu);
             this.panel7.Controls.Add(this.btnDetails);
             this.panel7.Controls.Add(this.txtSearch);
             this.panel7.Controls.Add(this.dtGrid);
@@ -101,31 +101,6 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(652, 706);
             this.panel7.TabIndex = 9;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(109, 628);
-            this.maskedTextBox1.Mask = "0000/00/00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 22);
-            this.maskedTextBox1.TabIndex = 24;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
-            // 
-            // btnOpenSubMenu
-            // 
-            this.btnOpenSubMenu.BackColor = System.Drawing.Color.Transparent;
-            this.btnOpenSubMenu.FlatAppearance.BorderSize = 0;
-            this.btnOpenSubMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenSubMenu.IconChar = FontAwesome.Sharp.IconChar.InfoCircle;
-            this.btnOpenSubMenu.IconColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnOpenSubMenu.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnOpenSubMenu.IconSize = 30;
-            this.btnOpenSubMenu.Location = new System.Drawing.Point(7, 7);
-            this.btnOpenSubMenu.Name = "btnOpenSubMenu";
-            this.btnOpenSubMenu.Size = new System.Drawing.Size(28, 28);
-            this.btnOpenSubMenu.TabIndex = 23;
-            this.btnOpenSubMenu.UseVisualStyleBackColor = false;
-            this.btnOpenSubMenu.Click += new System.EventHandler(this.btnOpenSubMenu_Click);
             // 
             // btnDetails
             // 
@@ -183,6 +158,7 @@
             this.dtGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrid.Size = new System.Drawing.Size(540, 527);
             this.dtGrid.TabIndex = 5;
+            this.dtGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrid_CellDoubleClick);
             // 
             // Column1
             // 
@@ -238,8 +214,12 @@
             // pnlSub
             // 
             this.pnlSub.BackColor = System.Drawing.Color.DarkCyan;
+            this.pnlSub.Controls.Add(this.btnEdit);
+            this.pnlSub.Controls.Add(this.txtValidDay);
+            this.pnlSub.Controls.Add(this.txtJoinDay);
+            this.pnlSub.Controls.Add(this.txtBirthDay);
             this.pnlSub.Controls.Add(this.btnOpenPicture);
-            this.pnlSub.Controls.Add(this.pictureBox1);
+            this.pnlSub.Controls.Add(this.pctImage);
             this.pnlSub.Controls.Add(this.label7);
             this.pnlSub.Controls.Add(this.txtAddress);
             this.pnlSub.Controls.Add(this.txtPhoneNumber);
@@ -256,34 +236,94 @@
             this.pnlSub.Size = new System.Drawing.Size(250, 519);
             this.pnlSub.TabIndex = 5;
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnEdit.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnEdit.FlatAppearance.BorderColor = System.Drawing.Color.Navy;
+            this.btnEdit.FlatAppearance.BorderSize = 2;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.IconChar = FontAwesome.Sharp.IconChar.Edit;
+            this.btnEdit.IconColor = System.Drawing.Color.White;
+            this.btnEdit.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnEdit.IconSize = 35;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(54, 425);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(129, 49);
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "ویرایش";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // txtValidDay
+            // 
+            this.txtValidDay.Enabled = false;
+            this.txtValidDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValidDay.Location = new System.Drawing.Point(10, 168);
+            this.txtValidDay.Mask = "0000/00/00";
+            this.txtValidDay.Name = "txtValidDay";
+            this.txtValidDay.Size = new System.Drawing.Size(120, 27);
+            this.txtValidDay.TabIndex = 69;
+            this.txtValidDay.ValidatingType = typeof(System.DateTime);
+            // 
+            // txtJoinDay
+            // 
+            this.txtJoinDay.Enabled = false;
+            this.txtJoinDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJoinDay.Location = new System.Drawing.Point(10, 126);
+            this.txtJoinDay.Mask = "0000/00/00";
+            this.txtJoinDay.Name = "txtJoinDay";
+            this.txtJoinDay.Size = new System.Drawing.Size(120, 27);
+            this.txtJoinDay.TabIndex = 68;
+            this.txtJoinDay.ValidatingType = typeof(System.DateTime);
+            // 
+            // txtBirthDay
+            // 
+            this.txtBirthDay.Enabled = false;
+            this.txtBirthDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBirthDay.Location = new System.Drawing.Point(10, 88);
+            this.txtBirthDay.Mask = "0000/00/00";
+            this.txtBirthDay.Name = "txtBirthDay";
+            this.txtBirthDay.Size = new System.Drawing.Size(120, 27);
+            this.txtBirthDay.TabIndex = 24;
+            this.txtBirthDay.ValidatingType = typeof(System.DateTime);
+            // 
             // btnOpenPicture
             // 
+            this.btnOpenPicture.Enabled = false;
             this.btnOpenPicture.FlatAppearance.BorderSize = 0;
             this.btnOpenPicture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenPicture.IconChar = FontAwesome.Sharp.IconChar.Plus;
             this.btnOpenPicture.IconColor = System.Drawing.Color.Cyan;
             this.btnOpenPicture.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnOpenPicture.IconSize = 25;
-            this.btnOpenPicture.Location = new System.Drawing.Point(10, 340);
+            this.btnOpenPicture.Location = new System.Drawing.Point(11, 321);
             this.btnOpenPicture.Name = "btnOpenPicture";
             this.btnOpenPicture.Size = new System.Drawing.Size(25, 25);
             this.btnOpenPicture.TabIndex = 67;
             this.btnOpenPicture.UseVisualStyleBackColor = true;
+            this.btnOpenPicture.Click += new System.EventHandler(this.btnOpenPicture_Click);
             // 
-            // pictureBox1
+            // pctImage
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(10, 339);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
-            this.pictureBox1.TabIndex = 66;
-            this.pictureBox1.TabStop = false;
+            this.pctImage.Location = new System.Drawing.Point(10, 320);
+            this.pctImage.Name = "pctImage";
+            this.pctImage.Size = new System.Drawing.Size(75, 75);
+            this.pctImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pctImage.TabIndex = 66;
+            this.pctImage.TabStop = false;
             // 
             // label7
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(189, 345);
+            this.label7.Location = new System.Drawing.Point(189, 326);
             this.label7.Name = "label7";
             this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label7.Size = new System.Drawing.Size(54, 20);
@@ -293,10 +333,12 @@
             // txtAddress
             // 
             this.txtAddress.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtAddress.Enabled = false;
             this.txtAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAddress.Location = new System.Drawing.Point(6, 232);
+            this.txtAddress.Location = new System.Drawing.Point(6, 213);
             this.txtAddress.Multiline = true;
             this.txtAddress.Name = "txtAddress";
+            this.txtAddress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtAddress.Size = new System.Drawing.Size(177, 95);
             this.txtAddress.TabIndex = 64;
@@ -306,7 +348,7 @@
             this.txtPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtPhoneNumber.Enabled = false;
             this.txtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhoneNumber.Location = new System.Drawing.Point(6, 72);
+            this.txtPhoneNumber.Location = new System.Drawing.Point(6, 53);
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(190, 24);
             this.txtPhoneNumber.TabIndex = 31;
@@ -318,6 +360,7 @@
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtName.Location = new System.Drawing.Point(6, 21);
             this.txtName.Name = "txtName";
+            this.txtName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtName.Size = new System.Drawing.Size(190, 24);
             this.txtName.TabIndex = 30;
             // 
@@ -326,7 +369,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(198, 76);
+            this.label6.Location = new System.Drawing.Point(198, 57);
             this.label6.Name = "label6";
             this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label6.Size = new System.Drawing.Size(45, 20);
@@ -338,7 +381,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(187, 226);
+            this.label5.Location = new System.Drawing.Point(187, 207);
             this.label5.Name = "label5";
             this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label5.Size = new System.Drawing.Size(56, 20);
@@ -350,7 +393,7 @@
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(169, 187);
+            this.label4.Location = new System.Drawing.Point(169, 168);
             this.label4.Name = "label4";
             this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label4.Size = new System.Drawing.Size(74, 20);
@@ -362,7 +405,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(156, 152);
+            this.label3.Location = new System.Drawing.Point(156, 133);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(87, 20);
@@ -374,7 +417,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(181, 114);
+            this.label2.Location = new System.Drawing.Point(181, 95);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(62, 20);
@@ -583,7 +626,7 @@
             this.pnlSubMenu.ResumeLayout(false);
             this.pnlSub.ResumeLayout(false);
             this.pnlSub.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctImage)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -594,7 +637,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel7;
-        private FontAwesome.Sharp.IconButton btnOpenSubMenu;
         private FontAwesome.Sharp.IconButton btnDetails;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dtGrid;
@@ -623,10 +665,13 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
         private FontAwesome.Sharp.IconButton btnLabel;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox txtBirthDay;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconButton btnOpenPicture;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pctImage;
+        private System.Windows.Forms.MaskedTextBox txtValidDay;
+        private System.Windows.Forms.MaskedTextBox txtJoinDay;
+        private FontAwesome.Sharp.IconButton btnEdit;
     }
 }

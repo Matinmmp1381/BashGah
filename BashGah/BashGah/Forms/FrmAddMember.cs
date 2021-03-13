@@ -14,8 +14,8 @@ namespace BashGah.Forms
 {
     public partial class FrmAddMember : Form
     {
-       private string _imageName;
-        private int _flag;
+        private string _imageName;
+        private int _flag = 0;
         public FrmAddMember()
         {
             InitializeComponent();
@@ -37,9 +37,10 @@ namespace BashGah.Forms
                     {
                         _imageName = Guid.NewGuid().ToString() + Path.GetExtension(pctImage.ImageLocation);
                     }
-                   else
+                    else
                     {
                         _imageName = Guid.NewGuid().ToString() + ".png";
+                        _flag = 0;
                     }
                     string path = Application.StartupPath + "/Images/";
                     if (Directory.Exists(path))
@@ -49,14 +50,15 @@ namespace BashGah.Forms
                     pctImage.Image.Save(path + _imageName);
                     Tbl_Athlete tbl = new Tbl_Athlete()
                     {
+                      
                         Athlete_Address = txtAddress.Text,
-                        Athlete_FullName =  txtName.Text,
-                        Athlete_PhoneNumber =  txtPhoneNumber.Text.ToString(),
-                        Athlete_WardropNum = null,                       
+                        Athlete_FullName = txtName.Text,
+                        Athlete_PhoneNumber = txtPhoneNumber.Text.ToString(),
+                        Athlete_WardropNum = null,
                         Athlete_Image = _imageName,
-                        Athlete_BirthDay =  txtBirthDay.Text.ToString(),
+                        Athlete_BirthDay = txtBirthDay.Text.ToString(),
                         Athlete_JoinDate = txtJoinDay.Text.ToString(),
-                        Athlete_ValidityDate =  txValidDay.Text.ToString(),
+                        Athlete_ValidityDate = txValidDay.Text.ToString(),
                     };
                     gymDB.Tbl_Athlete.Add(tbl);
                     gymDB.SaveChanges();
@@ -65,7 +67,7 @@ namespace BashGah.Forms
                     Reset();
                 };
             }
-            catch(Exception es)
+            catch (Exception es)
             {
                 MessageBox.Show(es.ToString());
                 MessageBox.Show("عملیات موفقیت آمیز نبود");
@@ -80,7 +82,7 @@ namespace BashGah.Forms
             if (openFile.ShowDialog() == DialogResult.OK)
             {
                 pctImage.ImageLocation = openFile.FileName;
-                
+                _flag = 1;
             }
         }
 

@@ -33,3 +33,4 @@ C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.csproj.CoreCompileInputs.ca
 C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.csproj.CopyComplete
 C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.exe
 C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.pdb
+C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.csprojAssemblyReference.cache
