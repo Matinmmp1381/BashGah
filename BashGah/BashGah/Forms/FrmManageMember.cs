@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Transactions;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -59,7 +60,7 @@ namespace BashGah.Forms
             pnlSub.Size = new Size(pnlSubMenu.Width, pnlSubMenu.Height);
             ActiveSubMenuBtn(btnSubDetail);
             if (dtGrid.CurrentRow != null)
-                _num = int.Parse(dtGrid.CurrentRow.Cells[0].Value.ToString());           
+                _num = int.Parse(dtGrid.CurrentRow.Cells[0].Value.ToString());
 
             if (_num == null || _num == 0)
             {
@@ -68,7 +69,7 @@ namespace BashGah.Forms
             }
             LoadInfo();
             if (_timerflag == 0)
-            {             
+            {
                 timer1.Enabled = true;
                 pnlSubMenu.Visible = true;
 
@@ -78,19 +79,28 @@ namespace BashGah.Forms
 
         private void LoadInfo()
         {
-            using (DB_GymEntities dbGym = new DB_GymEntities())
+            try
             {
-                var tbl = dbGym.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
-                txtName.Text = tbl[0].Athlete_FullName;
-                txtAddress.Text = tbl[0].Athlete_Address;
-                txtBirthDay.Text = tbl[0].Athlete_BirthDay;
-                txtJoinDay.Text = tbl[0].Athlete_JoinDate;
-                txtValidDay.Text = tbl[0].Athlete_ValidityDate;
-                txtPhoneNumber.Text = tbl[0].Athlete_PhoneNumber;
-                pctImage.ImageLocation = Application.StartupPath + "/Images/" + tbl[0].Athlete_Image;
-                _fullname = tbl[0].Athlete_FullName;
-                _validay = tbl[0].Athlete_ValidityDate;
+                using (DB_GymEntities dbGym = new DB_GymEntities())
+                {
+                    var tbl = dbGym.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
+                    txtName.Text = tbl[0].Athlete_FullName;
+                    txtAddress.Text = tbl[0].Athlete_Address;
+                    txtBirthDay.Text = tbl[0].Athlete_BirthDay;
+                    txtJoinDay.Text = tbl[0].Athlete_JoinDate;
+                    txtValidDay.Text = tbl[0].Athlete_ValidityDate;
+                    txtPhoneNumber.Text = tbl[0].Athlete_PhoneNumber;
+                    pctImage.ImageLocation = Application.StartupPath + "/Images/" + tbl[0].Athlete_Image;
+                    _fullname = tbl[0].Athlete_FullName;
+                    _validay = tbl[0].Athlete_ValidityDate;
+                }
             }
+            catch
+            {
+
+                MessageBox.Show("مشکل رد نمایش اطلاعات");
+            }
+
         }
 
         private void btnSubDetail_Click(object sender, EventArgs e)
@@ -127,7 +137,7 @@ namespace BashGah.Forms
         private void btnSubDelete_Click(object sender, EventArgs e)
         {
             ActiveSubMenuBtn(sender);
-            if (MessageBox.Show("آیا از حذف این کاربر مطمن هستید؟") == DialogResult.OK)
+            if (MessageBox.Show("آیا از حذف این کاربر مطمن هستید؟", "توجه", MessageBoxButtons.YesNo) == DialogResult.OK)
             {
                 using (DB_GymEntities dbGym = new DB_GymEntities())
                 {
@@ -142,7 +152,7 @@ namespace BashGah.Forms
                 pnlSubMenu.Size = new Size(_width, pnlSubMenu.Height);
                 pnlSubMenu.Visible = false;
             }
-           
+
         }
 
         private void ActiveSubMenuBtn(object sender)
@@ -192,7 +202,7 @@ namespace BashGah.Forms
                         Directory.CreateDirectory(path);
                     }
                     pctImage.Image.Save(path + _imageName);
-                     var tblr = gymDB.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
+                    var tblr = gymDB.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
                     File.Delete(Application.StartupPath + "/Images/" + tblr[0].Athlete_Image);
                     var tbl = gymDB.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
 
@@ -205,17 +215,17 @@ namespace BashGah.Forms
                     tbl[0].Athlete_BirthDay = txtBirthDay.Text.ToString();
                     tbl[0].Athlete_JoinDate = txtJoinDay.Text.ToString();
                     tbl[0].Athlete_ValidityDate = txtValidDay.Text.ToString();
-                    
+
                     gymDB.SaveChanges();
-                    
+
                     pctImage.Image.Save(path + _imageName);
                     MessageBox.Show("عملیات موفقیت آمیز بود");
                     dtGrid.DataSource = gymDB.Tbl_Athlete.ToList();
                     pnlSubMenu.Visible = false;
                     _width = 0;
                     _timerflag = 0;
-                    pnlSubMenu.Size = new Size(_width,pnlSubMenu.Height);
-                    
+                    pnlSubMenu.Size = new Size(_width, pnlSubMenu.Height);
+
                 };
             }
             catch (Exception es)
@@ -253,7 +263,7 @@ namespace BashGah.Forms
             }
             LoadInfo();
             if (_timerflag == 0)
-            {               
+            {
                 timer1.Enabled = true;
                 pnlSubMenu.Visible = true;
 
@@ -286,7 +296,43 @@ namespace BashGah.Forms
             }
         }
 
-       
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (TransactionScope ts = new TransactionScope())
+                {
+                    using (DB_GymEntities dbGym = new DB_GymEntities())
+                    {
+                        var tblAthlete = dbGym.Tbl_Athlete.Where(c => c.Athlete_ID == _num).ToList();
+                        tblAthlete[0].Athlete_ValidityDate = txtValidDayFee.Text;
+
+                        Tbl_Factor tblFactor = new Tbl_Factor()
+                        {
+                            Facotr_Price = int.Parse(txtFee.Value.ToString()),
+                            Factor_Date = txtValidDayFee.Text,
+                            Factor_Type = "شهریه",
+                            Athlete_ID = _num.Value
+                        };
+                        dbGym.Tbl_Factor.Add(tblFactor);
+                        dbGym.SaveChanges();
+                    }
+                    ts.Complete();
+                    Properties.Settings.Default.Fee = txtFee.Value.ToString();
+                }
+                _width = 0;
+                pnlSubMenu.Size = new Size(_width, pnlSubMenu.Height);
+                pnlSub.Visible = true;
+                pnlPayMent.Visible = false;
+                _timerflag = 0;
+                Properties.Settings.Default.Fee = txtFee.Value.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("عملیات موفقیت آمیز نبود");
+            }
+
+        }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -296,7 +342,7 @@ namespace BashGah.Forms
                 dtGrid.DataSource = list;
             }
         }
-
     }
 }
+
 

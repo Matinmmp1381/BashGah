@@ -264,6 +264,7 @@
             this.btnPay.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPay.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnPay.UseVisualStyleBackColor = false;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // txtValidDayFee
             // 
