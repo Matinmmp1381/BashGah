@@ -51,6 +51,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnLabel = new FontAwesome.Sharp.IconButton();
+            this.barCodeCtrl = new DSBarCode.BarCodeCtrl();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctImage)).BeginInit();
             this.panel3.SuspendLayout();
@@ -59,6 +60,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.barCodeCtrl);
             this.panel1.Controls.Add(this.btnOpenPicture);
             this.panel1.Controls.Add(this.pctImage);
             this.panel1.Controls.Add(this.label7);
@@ -365,6 +367,25 @@
             this.btnLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnLabel.UseVisualStyleBackColor = false;
             // 
+            // barCodeCtrl
+            // 
+            this.barCodeCtrl.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.barCodeCtrl.BarCode = "1234567890";
+            this.barCodeCtrl.BarCodeHeight = 50;
+            this.barCodeCtrl.FooterFont = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.barCodeCtrl.HeaderFont = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.barCodeCtrl.HeaderText = "BarCode Demo";
+            this.barCodeCtrl.LeftMargin = 10;
+            this.barCodeCtrl.Location = new System.Drawing.Point(377, 377);
+            this.barCodeCtrl.Name = "barCodeCtrl";
+            this.barCodeCtrl.ShowFooter = false;
+            this.barCodeCtrl.ShowHeader = false;
+            this.barCodeCtrl.Size = new System.Drawing.Size(295, 68);
+            this.barCodeCtrl.TabIndex = 31;
+            this.barCodeCtrl.TopMargin = 10;
+            this.barCodeCtrl.VertAlign = DSBarCode.BarCodeCtrl.AlignType.Center;
+            this.barCodeCtrl.Weight = DSBarCode.BarCodeCtrl.BarCodeWeight.Small;
+            // 
             // FrmAddMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -406,5 +427,6 @@
         private FontAwesome.Sharp.IconButton btnOpenPicture;
         private System.Windows.Forms.PictureBox pctImage;
         private System.Windows.Forms.Label label7;
+        private DSBarCode.BarCodeCtrl barCodeCtrl;
     }
 }

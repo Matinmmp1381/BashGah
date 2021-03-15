@@ -29,6 +29,7 @@ namespace BashGah
         public string Athlete_Address { get; set; }
         public string Athlete_PhoneNumber { get; set; }
         public string Athlete_Image { get; set; }
+        public string Athlete_Barcod { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tbl_Factor> Tbl_Factor { get; set; }

@@ -15,6 +15,7 @@ namespace BashGah.Forms
     public partial class FrmAddMember : Form
     {
         private string _imageName;
+        
         private int _flag = 0;
         public FrmAddMember()
         {
@@ -33,13 +34,14 @@ namespace BashGah.Forms
             {
                 using (DB_GymEntities gymDB = new DB_GymEntities())
                 {
+                    string guid = Guid.NewGuid().ToString();
                     if (_flag == 1)
                     {
-                        _imageName = Guid.NewGuid().ToString() + Path.GetExtension(pctImage.ImageLocation);
+                        _imageName = guid+ Path.GetExtension(pctImage.ImageLocation);
                     }
                     else
                     {
-                        _imageName = Guid.NewGuid().ToString() + ".png";
+                        _imageName = guid + ".png";
                         _flag = 0;
                     }
                     string path = Application.StartupPath + "/Images/";
@@ -48,9 +50,10 @@ namespace BashGah.Forms
                         Directory.CreateDirectory(path);
                     }
                     pctImage.Image.Save(path + _imageName);
+
                     Tbl_Athlete tbl = new Tbl_Athlete()
                     {
-                      
+
                         Athlete_Address = txtAddress.Text,
                         Athlete_FullName = txtName.Text,
                         Athlete_PhoneNumber = txtPhoneNumber.Text.ToString(),
@@ -59,9 +62,14 @@ namespace BashGah.Forms
                         Athlete_BirthDay = txtBirthDay.Text.ToString(),
                         Athlete_JoinDate = txtJoinDay.Text.ToString(),
                         Athlete_ValidityDate = txValidDay.Text.ToString(),
+                        Athlete_Barcod = "_Barcode_" + guid + ".png"
                     };
                     gymDB.Tbl_Athlete.Add(tbl);
                     gymDB.SaveChanges();
+                    //Make Barcode
+                    barCodeCtrl.BarCode = tbl.Athlete_ID.ToString();
+                    barCodeCtrl.SaveImage(path + "_Barcode_" + guid + ".png");
+                    //
                     pctImage.Image.Save(path + _imageName);
                     MessageBox.Show("عملیات موفقیت آمیز بود");
                     Reset();

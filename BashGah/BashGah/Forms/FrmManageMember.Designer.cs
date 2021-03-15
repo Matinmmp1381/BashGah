@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.btn_Print = new FontAwesome.Sharp.IconButton();
             this.btnDetails = new FontAwesome.Sharp.IconButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dtGrid = new System.Windows.Forms.DataGridView();
@@ -77,6 +78,7 @@
             this.btnLabel = new FontAwesome.Sharp.IconButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.stiReport1 = new Stimulsoft.Report.StiReport();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrid)).BeginInit();
@@ -106,6 +108,7 @@
             // 
             // panel7
             // 
+            this.panel7.Controls.Add(this.btn_Print);
             this.panel7.Controls.Add(this.btnDetails);
             this.panel7.Controls.Add(this.txtSearch);
             this.panel7.Controls.Add(this.dtGrid);
@@ -114,6 +117,29 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(652, 926);
             this.panel7.TabIndex = 9;
+            // 
+            // btn_Print
+            // 
+            this.btn_Print.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btn_Print.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btn_Print.FlatAppearance.BorderSize = 0;
+            this.btn_Print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Print.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Print.ForeColor = System.Drawing.Color.White;
+            this.btn_Print.IconChar = FontAwesome.Sharp.IconChar.Print;
+            this.btn_Print.IconColor = System.Drawing.Color.White;
+            this.btn_Print.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Print.IconSize = 27;
+            this.btn_Print.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Print.Location = new System.Drawing.Point(62, 838);
+            this.btn_Print.Name = "btn_Print";
+            this.btn_Print.Size = new System.Drawing.Size(203, 46);
+            this.btn_Print.TabIndex = 23;
+            this.btn_Print.Text = " چاپ کارت عضویت";
+            this.btn_Print.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_Print.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_Print.UseVisualStyleBackColor = false;
+            this.btn_Print.Click += new System.EventHandler(this.btn_Print_Click);
             // 
             // btnDetails
             // 
@@ -742,6 +768,28 @@
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // stiReport1
+            // 
+            this.stiReport1.CookieContainer = null;
+            this.stiReport1.EngineVersion = Stimulsoft.Report.Engine.StiEngineVersion.EngineV2;
+            this.stiReport1.ReferencedAssemblies = new string[] {
+        "System.Dll",
+        "System.Drawing.Dll",
+        "System.Windows.Forms.Dll",
+        "System.Data.Dll",
+        "System.Xml.Dll",
+        "Stimulsoft.Controls.Dll",
+        "Stimulsoft.Base.Dll",
+        "Stimulsoft.Report.Dll"};
+            this.stiReport1.ReportAlias = "Report";
+            this.stiReport1.ReportGuid = "fd86c28ecfa9475bb8c474c4352ab97b";
+            this.stiReport1.ReportImage = null;
+            this.stiReport1.ReportName = "Report";
+            this.stiReport1.ReportSource = null;
+            this.stiReport1.ReportUnit = Stimulsoft.Report.StiReportUnitType.Inches;
+            this.stiReport1.ScriptLanguage = Stimulsoft.Report.StiReportLanguageType.CSharp;
+            this.stiReport1.UseProgressInThread = false;
+            // 
             // FrmManageMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -817,5 +865,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtFeeName;
         private System.Windows.Forms.Label label8;
+        private FontAwesome.Sharp.IconButton btn_Print;
+        private Stimulsoft.Report.StiReport stiReport;
+        private Stimulsoft.Report.StiReport stiReport1;
     }
 }

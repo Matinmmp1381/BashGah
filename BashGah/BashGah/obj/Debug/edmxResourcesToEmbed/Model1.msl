@@ -24,6 +24,7 @@
     <EntitySetMapping Name="Tbl_Athlete">
       <EntityTypeMapping TypeName="DB_GymModel.Tbl_Athlete">
         <MappingFragment StoreEntitySet="Tbl_Athlete">
+          <ScalarProperty Name="Athlete_Barcod" ColumnName="Athlete_Barcod" />
           <ScalarProperty Name="Athlete_Image" ColumnName="Athlete_Image" />
           <ScalarProperty Name="Athlete_PhoneNumber" ColumnName="Athlete_PhoneNumber" />
           <ScalarProperty Name="Athlete_Address" ColumnName="Athlete_Address" />

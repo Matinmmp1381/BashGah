@@ -334,6 +334,41 @@ namespace BashGah.Forms
 
         }
 
+        private void btn_Print_Click(object sender, EventArgs e)
+        {
+            DataTable DT_Information = new DataTable();
+            if (dtGrid.CurrentRow == null)
+            {
+                MessageBox.Show("لطفا یک کاربر را انتخاب کنید");
+                return;
+            }
+
+            using (DB_GymEntities dbGym = new DB_GymEntities())
+            {
+                int num = int.Parse(dtGrid.CurrentRow.Cells[0].Value.ToString());
+                var tbl = dbGym.Tbl_Athlete.Where(c => c.Athlete_ID == num).ToList();
+                var query = tbl;
+               
+
+                DT_Information.Columns.Add("Athlete_ID");
+                DT_Information.Columns.Add("Athlete_FullName");
+                DT_Information.Columns.Add("Athlete_BirthDay");
+                DT_Information.Columns.Add("Athlete_ValidityDate");
+                DT_Information.Columns.Add("Athlete_Image");
+                DT_Information.Columns.Add("Athlete_Barcod");
+                DT_Information.Rows.Add();
+                DT_Information.Rows[0][0] = tbl[0].Athlete_ID;
+                DT_Information.Rows[0][1] = tbl[0].Athlete_FullName;
+                DT_Information.Rows[0][2] = tbl[0].Athlete_BirthDay;
+                DT_Information.Rows[0][3] = tbl[0].Athlete_ValidityDate;
+                DT_Information.Rows[0][4] = Application.StartupPath + "/Images/" + tbl[0].Athlete_Image;
+                DT_Information.Rows[0][5] = Application.StartupPath + "/Images/" + tbl[0].Athlete_Barcod;
+                stiReport1.RegData("DT_Information", DT_Information);
+                stiReport1.Load(Application.StartupPath + "/Report.mrt");
+                stiReport1.Show();
+            }
+        }
+
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             using (DB_GymEntities dbGym = new DB_GymEntities())
@@ -341,6 +376,24 @@ namespace BashGah.Forms
                 var list = dbGym.Tbl_Athlete.Where(c => c.Athlete_FullName.Contains(txtSearch.Text)).ToList();
                 dtGrid.DataSource = list;
             }
+        }
+        //برای تبدیل لیست به دیتا تیبل
+        public DataTable ConvertToDataTable<T>(IList<T> data)
+        {
+            PropertyDescriptorCollection properties =
+               TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+            foreach (PropertyDescriptor prop in properties)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            foreach (T item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
+            }
+            return table;
+
         }
     }
 }

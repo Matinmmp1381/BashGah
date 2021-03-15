@@ -18,6 +18,7 @@
           <Property Name="Athlete_Address" Type="nvarchar" MaxLength="250" />
           <Property Name="Athlete_PhoneNumber" Type="nvarchar" MaxLength="50" />
           <Property Name="Athlete_Image" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Athlete_Barcod" Type="nvarchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Tbl_Factor">
           <Key>
@@ -115,6 +116,7 @@
           <Property Name="Athlete_PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Athlete_Image" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Tbl_Factor" Relationship="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" FromRole="Tbl_Athlete" ToRole="Tbl_Factor" />
+          <Property Name="Athlete_Barcod" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Tbl_Factor">
           <Key>
@@ -168,6 +170,7 @@
           <EntitySetMapping Name="Tbl_Athlete">
             <EntityTypeMapping TypeName="DB_GymModel.Tbl_Athlete">
               <MappingFragment StoreEntitySet="Tbl_Athlete">
+                <ScalarProperty Name="Athlete_Barcod" ColumnName="Athlete_Barcod" />
                 <ScalarProperty Name="Athlete_Image" ColumnName="Athlete_Image" />
                 <ScalarProperty Name="Athlete_PhoneNumber" ColumnName="Athlete_PhoneNumber" />
                 <ScalarProperty Name="Athlete_Address" ColumnName="Athlete_Address" />

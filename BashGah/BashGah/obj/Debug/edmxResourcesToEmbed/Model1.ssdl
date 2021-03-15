@@ -13,6 +13,7 @@
     <Property Name="Athlete_Address" Type="nvarchar" MaxLength="250" />
     <Property Name="Athlete_PhoneNumber" Type="nvarchar" MaxLength="50" />
     <Property Name="Athlete_Image" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Athlete_Barcod" Type="nvarchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Tbl_Factor">
     <Key>
