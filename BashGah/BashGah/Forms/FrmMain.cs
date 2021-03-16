@@ -64,17 +64,20 @@ namespace BashGah.Forms
 
         private void btnCaseHistory_Click(object sender, EventArgs e)
         {
+
             ActiveSubMenuBtn(sender, RightLittleSubBtnPnl, RGBColor.color6, 1);
+            OpenChildForm(new FrmCaseHistory());
         }
 
         private void BtnAddGoods_Click(object sender, EventArgs e)
         {
-            // OpenChildForm(new FrmMain());
+             OpenChildForm(new FrmAddGoods());
             ActiveSubMenuBtn(sender, RightLittleSubBtnPnl, RGBColor.color7, 2);
         }
 
         private void BtnEditeOrDeleteGoods_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new FrmManageGoods());
             ActiveSubMenuBtn(sender, RightLittleSubBtnPnl, RGBColor.color7, 2);
         }
 

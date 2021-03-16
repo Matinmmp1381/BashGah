@@ -70,11 +70,23 @@
     <Compile Include="BarCodeCtrl.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Forms\FrmAddGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAddGoods.Designer.cs">
+      <DependentUpon>FrmAddGoods.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmAddMember.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmAddMember.Designer.cs">
       <DependentUpon>FrmAddMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCaseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCaseHistory.Designer.cs">
+      <DependentUpon>FrmCaseHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmMain.cs">
       <SubType>Form</SubType>
@@ -84,6 +96,12 @@
     </Compile>
     <Compile Include="Forms\FrmMain2.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmManageGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmManageGoods.Designer.cs">
+      <DependentUpon>FrmManageGoods.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmManageMember.cs">
       <SubType>Form</SubType>
@@ -120,11 +138,23 @@
     <Compile Include="Tbl_Wardrops.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Vw_Factor.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Forms\FrmAddGoods.resx">
+      <DependentUpon>FrmAddGoods.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmAddMember.resx">
       <DependentUpon>FrmAddMember.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCaseHistory.resx">
+      <DependentUpon>FrmCaseHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmManageGoods.resx">
+      <DependentUpon>FrmManageGoods.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmManageMember.resx">
       <DependentUpon>FrmManageMember.cs</DependentUpon>

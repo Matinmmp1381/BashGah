@@ -48,6 +48,26 @@
           <Property Name="Wardrop_State" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Wardrop_AthleteName" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_Gym.dbo.Vw_Factor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Vw_Factor">
+          <Key>
+            <PropertyRef Name="Factor_ID" />
+            <PropertyRef Name="Factor_Date" />
+            <PropertyRef Name="Facotr_Price" />
+            <PropertyRef Name="Athlete_ID" />
+            <PropertyRef Name="Factor_Type" />
+            <PropertyRef Name="Athlete_FullName" />
+            <PropertyRef Name="AthleteName" />
+          </Key>
+          <Property Name="Factor_ID" Type="int" Nullable="false" />
+          <Property Name="Factor_Date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Facotr_Price" Type="int" Nullable="false" />
+          <Property Name="Athlete_ID" Type="int" Nullable="false" />
+          <Property Name="Factor_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Athlete_FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AthleteName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Tbl_Factor_Tbl_Athlete">
           <End Role="Tbl_Athlete" Type="Self.Tbl_Athlete" Multiplicity="1" />
           <End Role="Tbl_Factor" Type="Self.Tbl_Factor" Multiplicity="*" />
@@ -65,6 +85,17 @@
           <EntitySet Name="Tbl_Factor" EntityType="Self.Tbl_Factor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Wardrops" EntityType="Self.Tbl_Wardrops" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vw_Factor" EntityType="Self.Vw_Factor" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Vw_Factor].[Factor_ID] AS [Factor_ID], 
+    [Vw_Factor].[Factor_Date] AS [Factor_Date], 
+    [Vw_Factor].[Facotr_Price] AS [Facotr_Price], 
+    [Vw_Factor].[Athlete_ID] AS [Athlete_ID], 
+    [Vw_Factor].[Factor_Type] AS [Factor_Type], 
+    [Vw_Factor].[Athlete_FullName] AS [Athlete_FullName], 
+    [Vw_Factor].[AthleteName] AS [AthleteName]
+    FROM [dbo].[Vw_Factor] AS [Vw_Factor]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Tbl_Factor_Tbl_Athlete" Association="Self.FK_Tbl_Factor_Tbl_Athlete">
             <End Role="Tbl_Athlete" EntitySet="Tbl_Athlete" />
             <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
@@ -101,6 +132,7 @@
             <End Role="Tbl_Athlete" EntitySet="Tbl_Athlete" />
             <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
           </AssociationSet>
+          <EntitySet Name="Vw_Factor" EntityType="DB_GymModel.Vw_Factor" />
         </EntityContainer>
         <EntityType Name="Tbl_Athlete">
           <Key>
@@ -141,6 +173,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Vw_Factor">
+          <Key>
+            <PropertyRef Name="Factor_ID" />
+            <PropertyRef Name="Factor_Date" />
+            <PropertyRef Name="Facotr_Price" />
+            <PropertyRef Name="Athlete_ID" />
+            <PropertyRef Name="Factor_Type" />
+            <PropertyRef Name="Athlete_FullName" />
+            <PropertyRef Name="AthleteName" />
+          </Key>
+          <Property Name="Factor_ID" Type="Int32" Nullable="false" />
+          <Property Name="Factor_Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Facotr_Price" Type="Int32" Nullable="false" />
+          <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
+          <Property Name="Factor_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Athlete_FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AthleteName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -188,6 +238,19 @@
               <MappingFragment StoreEntitySet="Tbl_Factor">
                 <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
                 <ScalarProperty Name="Factor_Type" ColumnName="Factor_Type" />
+                <ScalarProperty Name="Facotr_Price" ColumnName="Facotr_Price" />
+                <ScalarProperty Name="Factor_Date" ColumnName="Factor_Date" />
+                <ScalarProperty Name="Factor_ID" ColumnName="Factor_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vw_Factor">
+            <EntityTypeMapping TypeName="DB_GymModel.Vw_Factor">
+              <MappingFragment StoreEntitySet="Vw_Factor">
+                <ScalarProperty Name="AthleteName" ColumnName="AthleteName" />
+                <ScalarProperty Name="Athlete_FullName" ColumnName="Athlete_FullName" />
+                <ScalarProperty Name="Factor_Type" ColumnName="Factor_Type" />
+                <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
                 <ScalarProperty Name="Facotr_Price" ColumnName="Facotr_Price" />
                 <ScalarProperty Name="Factor_Date" ColumnName="Factor_Date" />
                 <ScalarProperty Name="Factor_ID" ColumnName="Factor_ID" />
