@@ -479,7 +479,7 @@
             this.BtnEditeOrDeleteGoods.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEditeOrDeleteGoods.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEditeOrDeleteGoods.ForeColor = System.Drawing.Color.White;
-            this.BtnEditeOrDeleteGoods.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.BtnEditeOrDeleteGoods.IconChar = FontAwesome.Sharp.IconChar.Cog;
             this.BtnEditeOrDeleteGoods.IconColor = System.Drawing.Color.White;
             this.BtnEditeOrDeleteGoods.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnEditeOrDeleteGoods.IconSize = 22;
@@ -489,7 +489,7 @@
             this.BtnEditeOrDeleteGoods.Padding = new System.Windows.Forms.Padding(69, 0, 10, 0);
             this.BtnEditeOrDeleteGoods.Size = new System.Drawing.Size(229, 50);
             this.BtnEditeOrDeleteGoods.TabIndex = 3;
-            this.BtnEditeOrDeleteGoods.Text = "ویرایش و حذف کالا";
+            this.BtnEditeOrDeleteGoods.Text = "مدیریت کالا ها";
             this.BtnEditeOrDeleteGoods.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnEditeOrDeleteGoods.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.BtnEditeOrDeleteGoods.UseVisualStyleBackColor = false;

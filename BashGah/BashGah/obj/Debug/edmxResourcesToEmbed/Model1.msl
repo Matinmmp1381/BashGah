@@ -48,5 +48,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Vw_Factor">
+      <EntityTypeMapping TypeName="DB_GymModel.Vw_Factor">
+        <MappingFragment StoreEntitySet="Vw_Factor">
+          <ScalarProperty Name="Athlete_FullName" ColumnName="Athlete_FullName" />
+          <ScalarProperty Name="Factor_Type" ColumnName="Factor_Type" />
+          <ScalarProperty Name="Athlete_ID" ColumnName="Athlete_ID" />
+          <ScalarProperty Name="Facotr_Price" ColumnName="Facotr_Price" />
+          <ScalarProperty Name="Factor_Date" ColumnName="Factor_Date" />
+          <ScalarProperty Name="Factor_ID" ColumnName="Factor_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

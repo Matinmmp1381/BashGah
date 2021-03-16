@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="DB_GymModel.Tbl_Athlete" Width="1.5" PointX="2.25" PointY="1.5" />
         <EntityTypeShape EntityType="DB_GymModel.Tbl_Factor" Width="1.5" PointX="4.5" PointY="0.875" />
         <AssociationConnector Association="DB_GymModel.FK_Tbl_Factor_Tbl_Athlete" />
+        <EntityTypeShape EntityType="DB_GymModel.Vw_Factor" Width="1.5" PointX="5.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

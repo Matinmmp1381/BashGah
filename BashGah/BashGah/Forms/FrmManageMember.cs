@@ -137,7 +137,7 @@ namespace BashGah.Forms
         private void btnSubDelete_Click(object sender, EventArgs e)
         {
             ActiveSubMenuBtn(sender);
-            if (MessageBox.Show("آیا از حذف این کاربر مطمن هستید؟", "توجه", MessageBoxButtons.YesNo) == DialogResult.OK)
+            if (MessageBox.Show("آیا از حذف این کاربر مطمن هستید؟", "توجه", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 using (DB_GymEntities dbGym = new DB_GymEntities())
                 {
