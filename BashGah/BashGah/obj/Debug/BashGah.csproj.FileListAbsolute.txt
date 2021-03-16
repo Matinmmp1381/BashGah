@@ -64,6 +64,3 @@ C:\Project\BashGah\BashGah\BashGah\bin\Debug\Stimulsoft.Design.dll
 C:\Project\BashGah\BashGah\BashGah\bin\Debug\Stimulsoft.Design.pdb
 C:\Project\BashGah\BashGah\BashGah\bin\Debug\Stimulsoft.Design.xml
 C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.csprojAssemblyReference.cache
-C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmCaseHistory.resources
-C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmAddGoods.resources
-C:\Project\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmManageGoods.resources

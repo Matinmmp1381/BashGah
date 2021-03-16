@@ -27,7 +27,6 @@
       <End Role="Tbl_Athlete" EntitySet="Tbl_Athlete" />
       <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
     </AssociationSet>
-    <EntitySet Name="Vw_Factor" EntityType="DB_GymModel.Vw_Factor" />
   </EntityContainer>
   <EntityType Name="Tbl_Athlete">
     <Key>
@@ -68,22 +67,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="Vw_Factor">
-    <Key>
-      <PropertyRef Name="Factor_ID" />
-      <PropertyRef Name="Factor_Date" />
-      <PropertyRef Name="Facotr_Price" />
-      <PropertyRef Name="Athlete_ID" />
-      <PropertyRef Name="Factor_Type" />
-      <PropertyRef Name="Athlete_FullName" />
-      <PropertyRef Name="AthleteName" />
-    </Key>
-    <Property Name="Factor_ID" Type="Int32" Nullable="false" />
-    <Property Name="Factor_Date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Facotr_Price" Type="Int32" Nullable="false" />
-    <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
-    <Property Name="Factor_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Athlete_FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="AthleteName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
 </Schema>

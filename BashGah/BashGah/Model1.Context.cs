@@ -29,6 +29,5 @@ namespace BashGah
         public virtual DbSet<Tbl_Wardrops> Tbl_Wardrops { get; set; }
         public virtual DbSet<Tbl_Athlete> Tbl_Athlete { get; set; }
         public virtual DbSet<Tbl_Factor> Tbl_Factor { get; set; }
-        public virtual DbSet<Vw_Factor> Vw_Factor { get; set; }
     }
 }
