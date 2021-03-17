@@ -115,3 +115,4 @@ C:\Project\BashGah\BashGah\BashGah\BashGah\bin\Debug\Stimulsoft.Report.Helper.xm
 C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.csproj.CopyComplete
 C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmCaseHistory.resources
 C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmManageGoods.resources
+C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmSale.resources

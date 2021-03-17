@@ -84,6 +84,7 @@ namespace BashGah.Forms
         private void btnSaleGoods_Click(object sender, EventArgs e)
         {
             ActiveSubMenuBtn(sender, RightLittleSubBtnPnl, RGBColor.color7, 2);
+            OpenChildForm(new FrmSale());
         }
 
         private void btnManageWardrobe_Click(object sender, EventArgs e)

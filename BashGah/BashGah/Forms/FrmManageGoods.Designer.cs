@@ -35,10 +35,6 @@
             this.btnDetails = new FontAwesome.Sharp.IconButton();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dtGrid = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JoinDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlSubMenu = new System.Windows.Forms.Panel();
             this.pnlSub = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -60,6 +56,10 @@
             this.btnLabel = new FontAwesome.Sharp.IconButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JoinDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrid)).BeginInit();
@@ -111,11 +111,11 @@
             this.btn_Print.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btn_Print.IconSize = 27;
             this.btn_Print.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Print.Location = new System.Drawing.Point(75, 554);
+            this.btn_Print.Location = new System.Drawing.Point(75, 552);
             this.btn_Print.Name = "btn_Print";
-            this.btn_Print.Size = new System.Drawing.Size(203, 46);
+            this.btn_Print.Size = new System.Drawing.Size(160, 46);
             this.btn_Print.TabIndex = 23;
-            this.btn_Print.Text = " چاپ کارت عضویت";
+            this.btn_Print.Text = "چاپ لیست";
             this.btn_Print.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Print.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btn_Print.UseVisualStyleBackColor = false;
@@ -133,7 +133,7 @@
             this.btnDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnDetails.IconSize = 30;
             this.btnDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDetails.Location = new System.Drawing.Point(454, 551);
+            this.btnDetails.Location = new System.Drawing.Point(455, 552);
             this.btnDetails.Name = "btnDetails";
             this.btnDetails.Size = new System.Drawing.Size(160, 46);
             this.btnDetails.TabIndex = 22;
@@ -177,42 +177,6 @@
             this.dtGrid.Size = new System.Drawing.Size(540, 463);
             this.dtGrid.TabIndex = 5;
             this.dtGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrid_CellDoubleClick);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "Store_FoodID";
-            this.Column1.HeaderText = "شناسه";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 62;
-            // 
-            // FullName
-            // 
-            this.FullName.DataPropertyName = "Store_FoodName";
-            this.FullName.HeaderText = "نام و نام خانوادگی";
-            this.FullName.MinimumWidth = 6;
-            this.FullName.Name = "FullName";
-            this.FullName.ReadOnly = true;
-            this.FullName.Width = 150;
-            // 
-            // PhoneNumber
-            // 
-            this.PhoneNumber.DataPropertyName = "Store_FoodPrice";
-            this.PhoneNumber.HeaderText = "قیمت";
-            this.PhoneNumber.MinimumWidth = 6;
-            this.PhoneNumber.Name = "PhoneNumber";
-            this.PhoneNumber.ReadOnly = true;
-            this.PhoneNumber.Width = 140;
-            // 
-            // JoinDate
-            // 
-            this.JoinDate.DataPropertyName = "Store_FoodInventory";
-            this.JoinDate.HeaderText = "موجودی";
-            this.JoinDate.MinimumWidth = 6;
-            this.JoinDate.Name = "JoinDate";
-            this.JoinDate.ReadOnly = true;
-            this.JoinDate.Width = 135;
             // 
             // pnlSubMenu
             // 
@@ -507,6 +471,42 @@
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "Store_FoodID";
+            this.Column1.HeaderText = "شناسه";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 62;
+            // 
+            // FullName
+            // 
+            this.FullName.DataPropertyName = "Store_FoodName";
+            this.FullName.HeaderText = "نام کالا";
+            this.FullName.MinimumWidth = 6;
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            this.FullName.Width = 150;
+            // 
+            // PhoneNumber
+            // 
+            this.PhoneNumber.DataPropertyName = "Store_FoodPrice";
+            this.PhoneNumber.HeaderText = "قیمت";
+            this.PhoneNumber.MinimumWidth = 6;
+            this.PhoneNumber.Name = "PhoneNumber";
+            this.PhoneNumber.ReadOnly = true;
+            this.PhoneNumber.Width = 140;
+            // 
+            // JoinDate
+            // 
+            this.JoinDate.DataPropertyName = "Store_FoodInventory";
+            this.JoinDate.HeaderText = "موجودی";
+            this.JoinDate.MinimumWidth = 6;
+            this.JoinDate.Name = "JoinDate";
+            this.JoinDate.ReadOnly = true;
+            this.JoinDate.Width = 135;
+            // 
             // FrmManageGoods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -557,11 +557,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown txtInventory;
         private System.Windows.Forms.NumericUpDown txtPrice;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn JoinDate;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
     }
 }
