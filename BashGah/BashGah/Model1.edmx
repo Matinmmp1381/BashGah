@@ -5,6 +5,24 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="DB_GymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Tbl_AdminAccess">
+          <Key>
+            <PropertyRef Name="AdminAccess_ID" />
+          </Key>
+          <Property Name="AdminAccess_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminAccess_UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminAccess_PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminAccess_AddMember" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_ManageMember" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_CaseHistory" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_AddGoods" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_ManageGoods" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_SaleGoods" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_ManageWardRobe" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_ManageAdmin" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_BackUp" Type="bit" Nullable="false" />
+          <Property Name="AdminAccess_Restore" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Tbl_Athlete">
           <Key>
             <PropertyRef Name="Athlete_ID" />
@@ -79,6 +97,7 @@ warning 6002: The table/view 'DB_Gym.dbo.Vw_Factor' does not have a primary key 
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DB_GymModelStoreContainer">
+          <EntitySet Name="Tbl_AdminAccess" EntityType="Self.Tbl_AdminAccess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Athlete" EntityType="Self.Tbl_Athlete" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Factor" EntityType="Self.Tbl_Factor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" Schema="dbo" store:Type="Tables" />
@@ -130,6 +149,7 @@ warning 6002: The table/view 'DB_Gym.dbo.Vw_Factor' does not have a primary key 
             <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
           </AssociationSet>
           <EntitySet Name="Vw_Factor" EntityType="DB_GymModel.Vw_Factor" />
+          <EntitySet Name="Tbl_AdminAccess" EntityType="DB_GymModel.Tbl_AdminAccess" />
         </EntityContainer>
         <EntityType Name="Tbl_Athlete">
           <Key>
@@ -185,6 +205,24 @@ warning 6002: The table/view 'DB_Gym.dbo.Vw_Factor' does not have a primary key 
           <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
           <Property Name="Factor_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Athlete_FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Tbl_AdminAccess">
+          <Key>
+            <PropertyRef Name="AdminAccess_ID" />
+          </Key>
+          <Property Name="AdminAccess_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminAccess_UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdminAccess_PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdminAccess_AddMember" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_ManageMember" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_CaseHistory" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_AddGoods" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_ManageGoods" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_SaleGoods" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_ManageWardRobe" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_ManageAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_BackUp" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccess_Restore" Type="Boolean" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -248,6 +286,25 @@ warning 6002: The table/view 'DB_Gym.dbo.Vw_Factor' does not have a primary key 
                 <ScalarProperty Name="Facotr_Price" ColumnName="Facotr_Price" />
                 <ScalarProperty Name="Factor_Date" ColumnName="Factor_Date" />
                 <ScalarProperty Name="Factor_ID" ColumnName="Factor_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_AdminAccess">
+            <EntityTypeMapping TypeName="DB_GymModel.Tbl_AdminAccess">
+              <MappingFragment StoreEntitySet="Tbl_AdminAccess">
+                <ScalarProperty Name="AdminAccess_Restore" ColumnName="AdminAccess_Restore" />
+                <ScalarProperty Name="AdminAccess_BackUp" ColumnName="AdminAccess_BackUp" />
+                <ScalarProperty Name="AdminAccess_ManageAdmin" ColumnName="AdminAccess_ManageAdmin" />
+                <ScalarProperty Name="AdminAccess_ManageWardRobe" ColumnName="AdminAccess_ManageWardRobe" />
+                <ScalarProperty Name="AdminAccess_SaleGoods" ColumnName="AdminAccess_SaleGoods" />
+                <ScalarProperty Name="AdminAccess_ManageGoods" ColumnName="AdminAccess_ManageGoods" />
+                <ScalarProperty Name="AdminAccess_AddGoods" ColumnName="AdminAccess_AddGoods" />
+                <ScalarProperty Name="AdminAccess_CaseHistory" ColumnName="AdminAccess_CaseHistory" />
+                <ScalarProperty Name="AdminAccess_ManageMember" ColumnName="AdminAccess_ManageMember" />
+                <ScalarProperty Name="AdminAccess_AddMember" ColumnName="AdminAccess_AddMember" />
+                <ScalarProperty Name="AdminAccess_PassWord" ColumnName="AdminAccess_PassWord" />
+                <ScalarProperty Name="AdminAccess_UserName" ColumnName="AdminAccess_UserName" />
+                <ScalarProperty Name="AdminAccess_ID" ColumnName="AdminAccess_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

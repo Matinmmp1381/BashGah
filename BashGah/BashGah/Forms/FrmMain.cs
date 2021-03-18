@@ -90,11 +90,13 @@ namespace BashGah.Forms
         private void btnManageWardrobe_Click(object sender, EventArgs e)
         {
             ActiveSubMenuBtn(sender, RightLittleSubBtnPnl, RGBColor.color8, 3);
+            OpenChildForm(new FrmManageWardrobs());
         }
 
         private void btnManagement_Click(object sender, EventArgs e)
         {
             ActiveSubMenuBtn(sender, RightLittleSubBtnPnl, RGBColor.color9, 4);
+            OpenChildForm(new FrmManageAdmin());
         }
 
         private void btnTakeSuport_Click(object sender, EventArgs e)
@@ -110,7 +112,28 @@ namespace BashGah.Forms
         private void pctFitness_Click(object sender, EventArgs e)
         {
             DisableEveryThings();
-            ActiveForm.Close();
+            if (ActiveForm != null)
+            {
+                ActiveForm.Close();
+            }
+            
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            using (DB_GymEntities dbGym = new DB_GymEntities())
+            {
+                var tbl = dbGym.Tbl_AdminAccess.Where(c => c.AdminAccess_ID == Properties.Settings.Default.UserID).ToList();
+                btnAddMember.Enabled = tbl[0].AdminAccess_AddMember;
+                btnManageMember.Enabled = tbl[0].AdminAccess_ManageMember;
+                btnCaseHistory.Enabled = tbl[0].AdminAccess_CaseHistory;
+                BtnAddGoods.Enabled = tbl[0].AdminAccess_AddGoods;
+                btnManageMember.Enabled = tbl[0].AdminAccess_ManageGoods;
+                btnSaleGoods.Enabled = tbl[0].AdminAccess_SaleGoods;
+                btnManageWardrobe.Enabled = tbl[0].AdminAccess_ManageWardRobe;
+                btnTakeSuport.Enabled = tbl[0].AdminAccess_BackUp;
+                btnRecovery.Enabled = tbl[0].AdminAccess_Restore;
+            }
         }
     }
 }

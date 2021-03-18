@@ -349,7 +349,7 @@
             this.btnManagement.Padding = new System.Windows.Forms.Padding(105, 0, 10, 0);
             this.btnManagement.Size = new System.Drawing.Size(229, 50);
             this.btnManagement.TabIndex = 2;
-            this.btnManagement.Text = "مدیرریت";
+            this.btnManagement.Text = "مدیریت";
             this.btnManagement.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnManagement.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnManagement.UseVisualStyleBackColor = false;
@@ -683,6 +683,7 @@
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmMain";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.pnlTop.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();

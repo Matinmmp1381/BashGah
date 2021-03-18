@@ -1,5 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DB_GymModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Tbl_AdminAccess">
+    <Key>
+      <PropertyRef Name="AdminAccess_ID" />
+    </Key>
+    <Property Name="AdminAccess_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminAccess_UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminAccess_PassWord" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminAccess_AddMember" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_ManageMember" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_CaseHistory" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_AddGoods" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_ManageGoods" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_SaleGoods" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_ManageWardRobe" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_ManageAdmin" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_BackUp" Type="bit" Nullable="false" />
+    <Property Name="AdminAccess_Restore" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="Tbl_Athlete">
     <Key>
       <PropertyRef Name="Athlete_ID" />
@@ -74,6 +92,7 @@ warning 6002: The table/view 'DB_Gym.dbo.Vw_Factor' does not have a primary key 
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DB_GymModelStoreContainer">
+    <EntitySet Name="Tbl_AdminAccess" EntityType="Self.Tbl_AdminAccess" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Athlete" EntityType="Self.Tbl_Athlete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Factor" EntityType="Self.Tbl_Factor" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tbl_Store" EntityType="Self.Tbl_Store" Schema="dbo" store:Type="Tables" />

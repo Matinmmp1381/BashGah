@@ -16,7 +16,7 @@ namespace BashGah
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BashGah.Forms.FrmMain());
+            Application.Run(new BashGah.Forms.FrmLogIn());
         }
     }
 }

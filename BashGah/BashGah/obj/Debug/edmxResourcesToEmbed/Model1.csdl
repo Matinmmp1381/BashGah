@@ -28,6 +28,7 @@
       <End Role="Tbl_Factor" EntitySet="Tbl_Factor" />
     </AssociationSet>
     <EntitySet Name="Vw_Factor" EntityType="DB_GymModel.Vw_Factor" />
+    <EntitySet Name="Tbl_AdminAccess" EntityType="DB_GymModel.Tbl_AdminAccess" />
   </EntityContainer>
   <EntityType Name="Tbl_Athlete">
     <Key>
@@ -83,5 +84,23 @@
     <Property Name="Athlete_ID" Type="Int32" Nullable="false" />
     <Property Name="Factor_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Athlete_FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Tbl_AdminAccess">
+    <Key>
+      <PropertyRef Name="AdminAccess_ID" />
+    </Key>
+    <Property Name="AdminAccess_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminAccess_UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AdminAccess_PassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AdminAccess_AddMember" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_ManageMember" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_CaseHistory" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_AddGoods" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_ManageGoods" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_SaleGoods" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_ManageWardRobe" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_ManageAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_BackUp" Type="Boolean" Nullable="false" />
+    <Property Name="AdminAccess_Restore" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

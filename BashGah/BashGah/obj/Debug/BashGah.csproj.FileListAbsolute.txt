@@ -116,3 +116,7 @@ C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.csproj.CopyComplete
 C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmCaseHistory.resources
 C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmManageGoods.resources
 C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmSale.resources
+C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmAddWardrobs.resources
+C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmManageWardrobs.resources
+C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmManageAdmin.resources
+C:\Project\BashGah\BashGah\BashGah\BashGah\obj\Debug\BashGah.Forms.FrmLogIn.resources

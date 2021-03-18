@@ -60,5 +60,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_AdminAccess">
+      <EntityTypeMapping TypeName="DB_GymModel.Tbl_AdminAccess">
+        <MappingFragment StoreEntitySet="Tbl_AdminAccess">
+          <ScalarProperty Name="AdminAccess_Restore" ColumnName="AdminAccess_Restore" />
+          <ScalarProperty Name="AdminAccess_BackUp" ColumnName="AdminAccess_BackUp" />
+          <ScalarProperty Name="AdminAccess_ManageAdmin" ColumnName="AdminAccess_ManageAdmin" />
+          <ScalarProperty Name="AdminAccess_ManageWardRobe" ColumnName="AdminAccess_ManageWardRobe" />
+          <ScalarProperty Name="AdminAccess_SaleGoods" ColumnName="AdminAccess_SaleGoods" />
+          <ScalarProperty Name="AdminAccess_ManageGoods" ColumnName="AdminAccess_ManageGoods" />
+          <ScalarProperty Name="AdminAccess_AddGoods" ColumnName="AdminAccess_AddGoods" />
+          <ScalarProperty Name="AdminAccess_CaseHistory" ColumnName="AdminAccess_CaseHistory" />
+          <ScalarProperty Name="AdminAccess_ManageMember" ColumnName="AdminAccess_ManageMember" />
+          <ScalarProperty Name="AdminAccess_AddMember" ColumnName="AdminAccess_AddMember" />
+          <ScalarProperty Name="AdminAccess_PassWord" ColumnName="AdminAccess_PassWord" />
+          <ScalarProperty Name="AdminAccess_UserName" ColumnName="AdminAccess_UserName" />
+          <ScalarProperty Name="AdminAccess_ID" ColumnName="AdminAccess_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
